@@ -12,7 +12,7 @@
 
 
     <string-array name="agentArray">
-        <item>Agent Reference</item>
+        <item>Agent Reference\n代理人</item>
         <item>JEC1</item>
         <item>JEC2</item>
         <item>JEC3</item>
@@ -20,7 +20,7 @@
     </string-array>
 
     <string-array name="nationalityArray">
-        <item>Nationality</item>
+        <item>Nationality\n国籍</item>
         <item>JEC10</item>
         <item>JEC2</item>
         <item>JEC3</item>
@@ -28,7 +28,7 @@
     </string-array>
 
     <string-array name="countryArray">
-        <item>Country</item>
+        <item>Country\n出生地</item>
         <item>JEC14</item>
         <item>JEC2</item>
         <item>JEC3</item>

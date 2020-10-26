@@ -6,7 +6,6 @@
     android:layout_height="match_parent">
 
     <!--header-->
-
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -39,244 +38,248 @@
 
     </LinearLayout>
 
-    <!--body-->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/topBar"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="40dp">
+        android:layout_below="@id/topBar">
 
-        <!--row1-->
+        <!--body-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="40dp">
 
-            <TextView
-                android:id="@+id/self"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Self (#)"
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:background="@drawable/bordersimple"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="@dimen/form_field_padding" />
-
-
-            <!-- agent spinnnner -->
+            <!--row1-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:orientation="horizontal"
-                 android:background="@drawable/bordersimple">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/agentSpinner"
+                <TextView
+                    android:id="@+id/self"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Self (本人)"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/bordersimple"
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="@dimen/form_field_padding" />
+
+
+                <!-- agent spinnnner -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:entries="@array/agentArray"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bordersimple">
+
+                    <Spinner
+                        android:id="@+id/agentSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:entries="@array/agentArray"
+                        android:theme="@style/ThemeOverlay.AppCompat.Light"
+                        android:spinnerMode="dropdown"/>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+            <!-- row2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <Spinner
+                    android:id="@+id/nationalitySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/nationalityArray"
                     android:theme="@style/ThemeOverlay.AppCompat.Light"
                     android:spinnerMode="dropdown"/>
 
             </LinearLayout>
 
-
-
-
-        </LinearLayout>
-
-        <!-- row2 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="horizontal"
-            android:background="@drawable/bordersimple">
-
-            <Spinner
-                android:id="@+id/nationalitySpinner"
+            <!-- row3 country -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/nationalityArray"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                android:spinnerMode="dropdown"/>
-
-        </LinearLayout>
-
-        <!-- row3 country -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="horizontal"
-            android:background="@drawable/bordersimple">
-
-            <Spinner
-                android:id="@+id/countrySpinner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/countryArray"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                android:spinnerMode="dropdown"/>
-
-        </LinearLayout>
-
-        <!-- row4 email -->
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Email"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-        <!-- row5 contact -->
-        <EditText
-            android:id="@+id/contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Contact Number"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-
-        <!-- row6 wechat -->
-        <EditText
-            android:id="@+id/weChat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="WeChat"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-        <!--row7 live selfie-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:weightSum="5"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">   
-            
-            <TextView
-                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Live Selfie"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <Spinner
+                    android:id="@+id/countrySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/countryArray"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    android:spinnerMode="dropdown"/>
+
+            </LinearLayout>
+
+            <!-- row4 email -->
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Email (邮件)"
                 android:textSize="@dimen/form_text_size"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:background="@drawable/bordersimple"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/form_field_padding" />
 
-            <ImageView
-                android:id="@+id/camera"
-                android:layout_width="0dp"
+            <!-- row5 contact -->
+            <EditText
+                android:id="@+id/contact"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_photo_camera_24"/>
-
-            <ImageView
-                android:id="@+id/picture"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:src="@drawable/banner1"/>
-
-
-        </LinearLayout>
-
-        <!--row8 Upload cv-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="5"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Upload CV"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Contact Number (联系电话)"
                 android:textSize="@dimen/form_text_size"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:background="@drawable/bordersimple"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/form_field_padding" />
+
+
+            <!-- row6 wechat -->
+            <EditText
+                android:id="@+id/weChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="WeChat (微信号)"
+                android:textSize="@dimen/form_text_size"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/bordersimple"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/form_field_padding" />
+
+            <!--row7 live selfie-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:weightSum="5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="Live Selfie (自拍照)"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/camera"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_baseline_photo_camera_24"/>
+
+                <ImageView
+                    android:id="@+id/picture"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/banner1"/>
+
+
+            </LinearLayout>
+
+            <!--row8 Upload cv-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="Upload CV (上传简历)"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/uploadCVbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundtextbackground"
+                    android:text="Upload"
+                    android:textSize="@dimen/button_text_size_small"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
+
+            <!--row9 Upload video-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:weightSum="5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="Upload Introduction Video\n上传自我介绍视频"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/uploadVideoBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/roundtextbackground"
+                    android:text="Upload"
+                    android:textSize="@dimen/button_text_size_small"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
 
             <Button
-                android:id="@+id/uploadCVbtn"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_weight="1"
-                android:background="@drawable/roundtextbackground"
-                android:text="Upload"
-                android:textSize="@dimen/button_text_size_small"
-                android:textColor="@color/white"/>
-
-
-        </LinearLayout>
-
-        <!--row9 Upload video-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:weightSum="5"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
+                android:id="@+id/fillBtn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Upload Introduction Video"
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
-
-            <Button
-                android:id="@+id/uploadVideoBtn"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_weight="1"
-                android:background="@drawable/roundtextbackground"
-                android:text="Upload"
-                android:textSize="@dimen/button_text_size_small"
-                android:textColor="@color/white"/>
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@color/colorPrimary"
+                android:text="Fill The Form\n填写表格"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_5sdp"/>
 
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/fillBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@color/colorPrimary"
-            android:text="Fill The Form"
-            android:textColor="@color/white"
-            android:textSize="@dimen/button_text_size"
-            android:paddingHorizontal="@dimen/_15sdp"
-            android:paddingVertical="@dimen/_5sdp"/>
-
-
-    </LinearLayout>
-
-
+    </ScrollView>
 
 
 </RelativeLayout>
