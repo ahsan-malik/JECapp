@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.jaredrummler.materialspinner.MaterialSpinner;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import j.e.c.com.R;
@@ -22,6 +20,10 @@ public class TeacherApplyFragment extends Fragment {
 
     @BindView(R.id.agentSpinner)
     Spinner agentSpinner;
+    @BindView(R.id.nationalitySpinner)
+    Spinner nationalitySpinner;
+    @BindView(R.id.countrySpinner)
+    Spinner countrySpinner;
 
     @Nullable
     @Override
@@ -39,12 +41,21 @@ public class TeacherApplyFragment extends Fragment {
     }
 
     void updateSpinners() {
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.agentArray, R.layout.spinner_item);
-// Specify the layout to use when the list of choices appears
+
+        //agent spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.agentArray, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         agentSpinner.setAdapter(adapter);
+
+        //nationality spinner
+        nationalitySpinner.setAdapter(getSpinnerAdapter(R.array.nationalityArray));
+        //country spinner
+        countrySpinner.setAdapter(getSpinnerAdapter(R.array.countryArray));
+    }
+
+    ArrayAdapter<CharSequence> getSpinnerAdapter(int dataArray){
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), dataArray, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return  adapter;
     }
 }

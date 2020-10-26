@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--header-->
+
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -37,6 +39,7 @@
 
     </LinearLayout>
 
+    <!--body-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -86,8 +89,112 @@
 
         </LinearLayout>
 
+        <!-- row2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal"
+            android:background="@drawable/bordersimple">
+
+            <Spinner
+                android:id="@+id/nationalitySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/nationalityArray"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                android:spinnerMode="dropdown"/>
+
+        </LinearLayout>
+
+        <!-- row3 country -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal"
+            android:background="@drawable/bordersimple">
+
+            <Spinner
+                android:id="@+id/countrySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/countryArray"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                android:spinnerMode="dropdown"/>
+
+        </LinearLayout>
+
+        <!-- row4 email -->
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Email"
+            android:textSize="@dimen/form_text_size"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/bordersimple"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/form_field_padding" />
+
+        <!-- row5 contact -->
+        <EditText
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Contact Number"
+            android:textSize="@dimen/form_text_size"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/bordersimple"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/form_field_padding" />
+
+
+        <!-- row6 wechat -->
+        <EditText
+            android:id="@+id/weChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="WeChat"
+            android:textSize="@dimen/form_text_size"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/bordersimple"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/form_field_padding" />
+
+        <!--row7 live selfie-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:weightSum="5"
+            android:orientation="horizontal">   
+            
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Live Selfie"
+                android:textSize="@dimen/form_text_size"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/c"/>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
+
+
 
 
 </RelativeLayout>

@@ -91,7 +91,6 @@
             android:padding="10dp"
             android:hint="Phone Number / 联系电话"
             android:id="@+id/phone"
-            android:drawablePadding="7dp"
             android:background="@drawable/shape_rect02"
             android:inputType="number" />
 
