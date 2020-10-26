@@ -171,6 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
             android:weightSum="5"
+            android:gravity="center_vertical"
             android:orientation="horizontal">   
             
             <TextView
@@ -183,13 +184,94 @@
                 android:textStyle="bold"/>
 
             <ImageView
+                android:id="@+id/camera"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/c"/>
+                android:src="@drawable/ic_baseline_photo_camera_24"/>
+
+            <ImageView
+                android:id="@+id/picture"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:src="@drawable/banner1"/>
 
 
         </LinearLayout>
+
+        <!--row8 Upload cv-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Upload CV"
+                android:textSize="@dimen/form_text_size"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/uploadCVbtn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:background="@drawable/roundtextbackground"
+                android:text="Upload"
+                android:textSize="@dimen/button_text_size_small"
+                android:textColor="@color/white"/>
+
+
+        </LinearLayout>
+
+        <!--row9 Upload video-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:weightSum="5"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="Upload Introduction Video"
+                android:textSize="@dimen/form_text_size"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/uploadVideoBtn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:background="@drawable/roundtextbackground"
+                android:text="Upload"
+                android:textSize="@dimen/button_text_size_small"
+                android:textColor="@color/white"/>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/fillBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/colorPrimary"
+            android:text="Fill The Form"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_5sdp"/>
 
 
     </LinearLayout>
