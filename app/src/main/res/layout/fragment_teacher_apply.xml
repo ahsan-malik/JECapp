@@ -26,9 +26,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:layout_marginLeft="10dp"
             android:textColor="@color/white"
-            android:text="Apply For Job\n    申请工作"
+            android:text="Apply For Teaching Jobs\n申请工作"
             android:textSize="@dimen/header_text_size"
             android:textStyle="bold"
             />
@@ -118,13 +119,18 @@
                 android:orientation="horizontal"
                 android:background="@drawable/bordersimple">
 
-                <Spinner
-                    android:id="@+id/countrySpinner"
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:entries="@array/countryArray"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light"
-                    android:spinnerMode="dropdown"/>
+                    android:layout_height="wrap_content"
+                    app:ccp_showFullName="true"
+                    app:ccp_showPhoneCode="false"
+                    app:ccp_showNameCode="false"
+
+                    app:ccp_textSize="@dimen/form_text_size"
+                    app:ccp_textGravity="LEFT"
+                    app:ccp_contentColor="@color/colorPrimary"
+                    app:ccpDialog_textColor="@color/colorPrimary"/>
 
             </LinearLayout>
 
@@ -134,7 +140,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:text="Email (邮件)"
+                android:hint="Email (邮件)"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="@dimen/form_text_size"
                 android:textColor="@color/colorPrimary"
                 android:background="@drawable/bordersimple"
@@ -147,7 +154,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:text="Contact Number (联系电话)"
+                android:hint="Contact Number (联系电话)"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="@dimen/form_text_size"
                 android:textColor="@color/colorPrimary"
                 android:background="@drawable/bordersimple"
@@ -161,7 +169,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:text="WeChat (微信号)"
+                android:hint="WeChat (微信号)"
+                android:textColorHint="@color/colorPrimary"
                 android:textSize="@dimen/form_text_size"
                 android:textColor="@color/colorPrimary"
                 android:background="@drawable/bordersimple"
@@ -266,15 +275,16 @@
 
             <Button
                 android:id="@+id/fillBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rehan_button_height"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginHorizontal="@dimen/_50sdp"
+                android:background="@drawable/roundtextbackground"
+                android:textAllCaps="false"
                 android:text="Fill The Form\n填写表格"
                 android:textColor="@color/white"
                 android:textSize="@dimen/button_text_size"
-                android:paddingHorizontal="@dimen/_15sdp"
-                android:paddingVertical="@dimen/_5sdp"/>
+                android:paddingHorizontal="@dimen/_15sdp"/>
 
 
         </LinearLayout>

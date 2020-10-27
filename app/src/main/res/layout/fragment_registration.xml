@@ -44,18 +44,10 @@
         android:gravity="center"
         android:layout_centerInParent="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login or Register"
-            android:textSize="16sp"
-            android:textColor="@color/colorPrimary"/>
-
         <Button
             android:id="@+id/registerBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
             android:layout_marginHorizontal="70dp"
             android:background="@drawable/roundtextbackground"
             android:text="Register"

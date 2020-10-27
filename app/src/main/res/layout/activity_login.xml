@@ -68,6 +68,10 @@
 
         android:drawablePadding="7dp"
         android:background="@drawable/shape_rect02"
+
+        app:ccp_textGravity="LEFT"
+        app:ccp_contentColor="@color/colorPrimary"
+        app:ccpDialog_textColor="@color/colorPrimary"
    >
 
     </com.hbb20.CountryCodePicker>

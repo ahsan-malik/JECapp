@@ -52,7 +52,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginHorizontal="70dp"
             android:background="@drawable/roundtextbackground"
-            android:text="Apply For Jobs\n申请工作"
+            android:text="Apply For Teaching Jobs\n申请工作"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text_size"
             android:elevation="10dp"

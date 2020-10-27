@@ -43,10 +43,7 @@ public class TeacherApplyFragment extends Fragment {
     void updateSpinners() {
 
         //agent spinner
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.agentArray, R.layout.spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        agentSpinner.setAdapter(adapter);
-
+        agentSpinner.setAdapter(getSpinnerAdapter(R.array.agentArray));
         //nationality spinner
         nationalitySpinner.setAdapter(getSpinnerAdapter(R.array.nationalityArray));
         //country spinner

@@ -3,7 +3,7 @@
     <string name="title_home">Home/家</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="like">Like/喜欢</string>
+    <string name="like">Favorite/喜欢</string>
     <string name="chat">Chat/聊天</string>
     <string name="cart">Cart</string>
     <string name="profile">Profile</string>
@@ -12,7 +12,7 @@
 
 
     <string-array name="agentArray">
-        <item>Agent Reference\n代理人</item>
+        <item>Agent Reference (代理人)</item>
         <item>JEC1</item>
         <item>JEC2</item>
         <item>JEC3</item>
@@ -20,15 +20,13 @@
     </string-array>
 
     <string-array name="nationalityArray">
-        <item>Nationality\n国籍</item>
-        <item>JEC10</item>
-        <item>JEC2</item>
-        <item>JEC3</item>
-        <item>JEC4</item>
+        <item>Nationality (国籍)</item>
+        <item>Native</item>
+        <item>Non Native</item>
     </string-array>
 
     <string-array name="countryArray">
-        <item>Country\n出生地</item>
+        <item>Country (出生地)</item>
         <item>JEC14</item>
         <item>JEC2</item>
         <item>JEC3</item>
