@@ -33,4 +33,28 @@
         <item>JEC4</item>
     </string-array>
 
+    <string-array name="typeOfVisa">
+        <item>Type of Visa (签证类型)</item>
+        <item>Student Visa</item>
+        <item>Work Visa</item>
+        <item>Business Visa</item>
+        <item>Tourist Visa</item>
+        <item>Family Visa</item>
+    </string-array>
+
+    <string-array name="workSpace">
+        <item>Accepted work Space (可接受的工作地点)</item>
+        <item>Beijing</item>
+        <item>Shanghai</item>
+        <item>Hong Kong</item>
+        <item>Guangzhou</item>
+        <item>Macau</item>
+    </string-array>
+
+    <string-array name="residence">
+        <item>Current Residence (现居住地)</item>
+        <item>China</item>
+        <item>Abroad</item>
+    </string-array>
+
 </resources>

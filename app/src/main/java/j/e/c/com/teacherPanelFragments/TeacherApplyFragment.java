@@ -4,15 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.hbb20.CountryCodePicker;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
 
 public class TeacherApplyFragment extends Fragment {
@@ -23,7 +25,7 @@ public class TeacherApplyFragment extends Fragment {
     @BindView(R.id.nationalitySpinner)
     Spinner nationalitySpinner;
     @BindView(R.id.countrySpinner)
-    Spinner countrySpinner;
+    CountryCodePicker countrySpinner;
 
     @Nullable
     @Override
@@ -43,16 +45,8 @@ public class TeacherApplyFragment extends Fragment {
     void updateSpinners() {
 
         //agent spinner
-        agentSpinner.setAdapter(getSpinnerAdapter(R.array.agentArray));
+        agentSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.agentArray, getContext()));
         //nationality spinner
-        nationalitySpinner.setAdapter(getSpinnerAdapter(R.array.nationalityArray));
-        //country spinner
-        countrySpinner.setAdapter(getSpinnerAdapter(R.array.countryArray));
-    }
-
-    ArrayAdapter<CharSequence> getSpinnerAdapter(int dataArray){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), dataArray, R.layout.spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        return  adapter;
+        nationalitySpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.nationalityArray, getContext()));
     }
 }
