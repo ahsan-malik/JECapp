@@ -84,7 +84,8 @@
                         android:layout_height="match_parent"
                         android:entries="@array/agentArray"
                         android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        android:spinnerMode="dropdown"/>
+                        android:spinnerMode="dropdown"
+                        android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
 
                 </LinearLayout>
 
@@ -107,7 +108,8 @@
                     android:layout_height="match_parent"
                     android:entries="@array/nationalityArray"
                     android:theme="@style/ThemeOverlay.AppCompat.Light"
-                    android:spinnerMode="dropdown"/>
+                    android:spinnerMode="dropdown"
+                    android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
 
             </LinearLayout>
 

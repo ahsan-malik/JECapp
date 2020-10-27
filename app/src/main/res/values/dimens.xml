@@ -11,4 +11,6 @@
     <dimen name="form_text_size">@dimen/_9ssp</dimen>
     <dimen name="rehan_button_height">40dp</dimen>
 
+    <dimen name="drop_down_offset_vertical">@dimen/_20sdp</dimen>
+
 </resources>

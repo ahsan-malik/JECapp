@@ -9,11 +9,15 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.hbb20.CountryCodePicker;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
 
@@ -45,8 +49,15 @@ public class TeacherApplyFragment extends Fragment {
     void updateSpinners() {
 
         //agent spinner
+
         agentSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.agentArray, getContext()));
         //nationality spinner
         nationalitySpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.nationalityArray, getContext()));
+    }
+
+    @OnClick(R.id.fillBtn)
+    public void onViewClicked() {
+        FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, new JobFormFragment()).addToBackStack(null).commit();
     }
 }

@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:textColor="@color/white"
-            android:text="Login or Register/ ##"
+            android:gravity="center_vertical"
+            android:text="Apply For Job\n申请工作"
             android:textSize="@dimen/header_text_size"
             android:textStyle="bold" />
 
@@ -34,330 +35,502 @@
 
     </LinearLayout>
 
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolBar"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="@dimen/_70sdp"
-            android:layout_height="@dimen/_70sdp"
-            android:src="@drawable/logo"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Job Form"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_14ssp"/>
-
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:hint="Name (姓名)"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-        <EditText
-            android:id="@+id/age"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Age (年龄)"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-        <EditText
-            android:id="@+id/nationality"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nationality (国籍)"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-        <EditText
-            android:id="@+id/salary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Salary Demand (工资需求)"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-        <EditText
-            android:id="@+id/Qualification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Qualification (资质)"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
+        android:layout_below="@id/toolBar">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/bordersimple">
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:src="@drawable/logo"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Graduated (毕业时间):"
-                android:textColorHint="@color/colorPrimary"
-                android:textSize="@dimen/form_text_size"
+                android:text="Job Form"
                 android:textColor="@color/colorPrimary"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:paddingVertical="@dimen/form_field_padding"
-                />
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"/>
 
-            <EditText
-                android:id="@+id/graduationYear"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="Graduation Year (毕业时间)..."
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:paddingVertical="@dimen/form_field_padding" />
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name (姓名):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bordersimple">
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding" />
 
-            <TextView
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Age (年龄):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:background="@null"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nationality (国籍):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/nationalityRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/nativeR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:text="Native (本地)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/form_text_size"/>
+
+                    <RadioButton
+                        android:id="@+id/nonNative"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:text="Non Native (非本地)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/form_text_size"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salary Demand (工资需求):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <EditText
+                    android:id="@+id/salary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qualification (资质):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <EditText
+                    android:id="@+id/qualification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Graduated (毕业时间):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <EditText
+                    android:id="@+id/graduationYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Visa:"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/visaRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/visaHave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:text="Have (签证  有)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/form_text_size"/>
+
+                    <RadioButton
+                        android:id="@+id/visaHaveNot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:text="Haven't (无)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/form_text_size"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <Spinner
+                    android:id="@+id/visaSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_3sdp"
+                    android:entries="@array/typeOfVisa"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    android:spinnerMode="dropdown"
+                    android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <Spinner
+                    android:id="@+id/workspaceSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_3sdp"                    android:entries="@array/workSpace"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    android:spinnerMode="dropdown"
+                    android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Have been to China (是否去过中国):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/beenChinaRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/yesRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:text="Yes (是)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/form_text_size"/>
+
+                    <RadioButton
+                        android:id="@+id/noRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:text="No(没有)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/form_text_size"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Work Experience (工作经验):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <EditText
+                    android:id="@+id/experience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="When can join (何时可上岗):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <EditText
+                    android:id="@+id/whenCanJoin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bordersimple">
+
+                <Spinner
+                    android:id="@+id/residenceSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_3sdp"
+                    android:entries="@array/residence"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    android:spinnerMode="dropdown"
+                    android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Job type (职业):"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="@color/colorPrimary"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/form_field_padding"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/jobTypeRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/jobFullTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:text="Full Time (全职)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/form_text_size"/>
+
+                    <RadioButton
+                        android:id="@+id/jobPartTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:text="Part Time (兼职)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/form_text_size"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submitBtn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Visa:"
-                android:textColorHint="@color/colorPrimary"
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:paddingVertical="@dimen/form_field_padding"
-                />
-
-            <RadioGroup
-                android:id="@+id/visaRadioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/visaHave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Have (签证  有)"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"/>
-
-                <RadioButton
-                    android:id="@+id/visaHaveNot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Haven't (无)"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"/>
-
-            </RadioGroup>
+                android:layout_height="@dimen/rehan_button_height"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:background="@drawable/roundtextbackground"
+                android:textAllCaps="false"
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/bordersimple">
-
-            <Spinner
-                android:id="@+id/visaSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/typeOfVisa"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                android:spinnerMode="dropdown" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/bordersimple">
-
-            <Spinner
-                android:id="@+id/workspaceSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/workSpace"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                android:spinnerMode="dropdown"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bordersimple">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Have been to China (是否去过中国):"
-                android:textColorHint="@color/colorPrimary"
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:paddingVertical="@dimen/form_field_padding"
-                />
-
-            <RadioGroup
-                android:id="@+id/beenChinaRadioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/yesRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yes (是)"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"/>
-
-                <RadioButton
-                    android:id="@+id/noRadio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No (没有)"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"/>
-
-            </RadioGroup>
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/experience"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Work Experience (工作经验)"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-        <EditText
-            android:id="@+id/whenCanJoin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="When can join (何时可上岗)"
-            android:textColorHint="@color/colorPrimary"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bordersimple"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/form_field_padding" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/bordersimple">
-
-            <Spinner
-                android:id="@+id/residenceSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/typeOfVisa"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                android:spinnerMode="dropdown" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bordersimple">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Job type (职业):"
-                android:textColorHint="@color/colorPrimary"
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:paddingVertical="@dimen/form_field_padding"
-                />
-
-            <RadioGroup
-                android:id="@+id/jobTypeRadioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/jobFullTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Full Time (全职)"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"/>
-
-                <RadioButton
-                    android:id="@+id/jobPartTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Part Time (兼职)"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"/>
-
-            </RadioGroup>
-
-        </LinearLayout>
+    </ScrollView>
 
 
-
-    </LinearLayout>
 
 </RelativeLayout>

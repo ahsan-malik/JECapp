@@ -9,8 +9,8 @@ public class Helper {
 
     public static ArrayAdapter<CharSequence> getSimpleSpinnerAdapter(int dataArray, Context context){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, dataArray, R.layout.spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        return  adapter;
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
+        return adapter;
     }
 
 }
