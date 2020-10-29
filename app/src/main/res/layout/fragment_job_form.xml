@@ -73,7 +73,7 @@
                     android:background="@null"
                     android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
                     android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="Name"
+                    android:hint="@string/name"
                     android:textSize="@dimen/job_form_text_size"
                     android:inputType="text"
                     android:maxLines="1"/>
@@ -98,7 +98,7 @@
                     android:background="@null"
                     android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
                     android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="Age"
+                    android:hint="@string/age"
                     android:textSize="@dimen/job_form_text_size"
                     android:inputType="number"
                     android:maxLines="1"
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="Gender / 国籍"
+                android:hint="Gender"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
@@ -195,7 +195,7 @@
                         android:background="@null"
                         android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
                         android:paddingTop="@dimen/editTextPaddingTop"
-                        android:hint="Education"
+                        android:hint="@string/education"
                         android:textSize="@dimen/job_form_text_size"
                         android:inputType="text"
                         android:maxLines="1"/>
@@ -220,7 +220,7 @@
                         android:background="@null"
                         android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
                         android:paddingTop="@dimen/editTextPaddingTop"
-                        android:hint="Graduation"
+                        android:hint="@string/graduation"
                         android:textSize="@dimen/job_form_text_size"
                         android:inputType="text"
                         android:maxLines="1"/>
@@ -234,7 +234,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="Job Title"
+                android:hint="@string/job_title"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
@@ -254,7 +254,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="Visa"
+                android:hint="@string/visa"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
@@ -275,7 +275,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="Visa Type"
+                android:hint="@string/visa_type"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -308,7 +308,7 @@
                     android:background="@null"
                     android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
                     android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="Accepted Work Place"
+                    android:hint="@string/accepted_work_place"
                     android:textSize="@dimen/job_form_text_size"
                     android:inputType="text"
                     android:maxLines="1"/>
@@ -320,7 +320,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="Have been to China"
+                android:hint="@string/have_been_to_china"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
@@ -341,7 +341,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="How Many Years Were In China"
+                android:hint="@string/how_many_years_were_in_china"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -362,7 +362,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="Work Experience"
+                android:hint="@string/work_experience"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
@@ -378,11 +378,36 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/whenCanJoin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="Current Residence (现居住地)"
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="@string/when_can_join"
+                    android:textSize="@dimen/job_form_text_size"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:focusable="false"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="@string/current_residence"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
@@ -404,7 +429,7 @@
                 android:layout_marginVertical="@dimen/_20sdp"
                 android:background="@drawable/roundtextbackground"
                 android:textAllCaps="false"
-                android:text="Submit"
+                android:text="@string/submit"
                 android:textColor="@color/white"
                 android:textSize="@dimen/button_text_size"/>
 

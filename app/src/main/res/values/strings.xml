@@ -11,6 +11,20 @@
     <string name="forgotPassword"><u>Forgot Password/忘记密码</u></string>
     <string name="salary_demand">Salary Demand / 工资需求</string>
     <string name="nationality">Nationality / 国籍</string>
+    <string name="name">Name / 姓名</string>
+    <string name="age">Age / 年龄</string>
+    <string name="education">Education / 教育水平</string>
+    <string name="graduation">Graduation / 毕业时间</string>
+    <string name="job_title">Job Title / 职称</string>
+    <string name="visa">Visa</string>
+    <string name="accepted_work_place">Accepted Work Place / 可接受的工作地点</string>
+    <string name="visa_type">Visa Type / 签证类型</string>
+    <string name="have_been_to_china">Have been to China / 是否去过中国</string>
+    <string name="how_many_years_were_in_china">How Many Years Were In China</string>
+    <string name="work_experience">Work Experience / 工作经验</string>
+    <string name="current_residence">Current Residence / 现居住地</string>
+    <string name="submit">Submit / 提交</string>
+    <string name="when_can_join">When Can Join / 何时可上岗</string>
 
 
     <string-array name="agentArray">

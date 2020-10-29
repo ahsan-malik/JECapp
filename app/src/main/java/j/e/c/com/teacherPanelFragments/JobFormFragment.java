@@ -15,6 +15,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import j.e.c.com.Others.Helper;
@@ -59,6 +62,12 @@ public class JobFormFragment extends Fragment {
     TextInputLayout yearsInChinaparent;
     @BindView(R.id.submitBtn)
     Button submitBtn;
+    @BindView(R.id.age)
+    TextInputLayout age;
+    @BindView(R.id.workPlace)
+    TextInputLayout workPlace;
+    @BindView(R.id.whenCanJoin)
+    TextInputLayout whenCanJoin;
 
     @Nullable
     @Override
@@ -101,5 +110,16 @@ public class JobFormFragment extends Fragment {
         //visaSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.typeOfVisa, getContext()));
         //workspaceSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.workSpace, getContext()));
         //residenceSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.residence, getContext()));
+
+        String pattern = "dd-MM-yy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        Date date = new Date();
+        whenCanJoin.getEditText().setText(simpleDateFormat.format(date));
+        whenCanJoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
