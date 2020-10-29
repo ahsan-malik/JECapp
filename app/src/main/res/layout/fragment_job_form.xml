@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,11 +36,11 @@
 
     </LinearLayout>
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolBar">
+        android:layout_below="@id/toolBar"
+        android:elevation="1dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,472 +50,352 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_70sdp"
-                android:src="@drawable/logo"/>
+        <ImageView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:src="@drawable/logocompany"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Job Form"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_12ssp"
-                android:textStyle="bold"/>
-
-            <LinearLayout
+            <!--Name -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="20dp"
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name (姓名):"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
-
-                <EditText
-                    android:id="@+id/name"
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding" />
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="Name"
+                    android:textSize="@dimen/job_form_text_size"
+                    android:inputType="text"
+                    android:maxLines="1"/>
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <!--age -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Age (年龄):"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
-
-                <EditText
-                    android:id="@+id/age"
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="Age"
+                    android:textSize="@dimen/job_form_text_size"
                     android:inputType="number"
-                    android:background="@null"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding" />
+                    android:maxLines="1"
+                    android:maxLength="3"/>
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="@string/nationality"
+                app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/bordersimple">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nationality (国籍):"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
-
-                <RadioGroup
-                    android:id="@+id/nationalityRadioGroup"
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/nationality"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:inputType="none"
+                    android:textSize="@dimen/form_text_size"
+                    android:background="@drawable/shape_rect02"/>
 
-                    <RadioButton
-                        android:id="@+id/nativeR"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:text="Native (本地)"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/form_text_size"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <RadioButton
-                        android:id="@+id/nonNative"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:text="Non Native (非本地)"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/form_text_size"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="Gender / 国籍"
+                app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Salary Demand (工资需求):"
-                    android:textColorHint="@color/colorPrimary"
+                    android:inputType="none"
                     android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
+                    android:background="@drawable/shape_rect02"/>
 
-                <EditText
-                    android:id="@+id/salary"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/salary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding" />
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="@string/salary_demand"
+                    android:textSize="@dimen/job_form_text_size"
+                    android:inputType="number"
+                    android:maxLines="1"/>
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
+                android:weightSum="2"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/education"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Qualification (资质):"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
+                    android:background="@drawable/shape_rect02"
+                    android:layout_marginTop="-1dp"
+                    android:paddingTop="@dimen/text_layout_paddin_top"
+                    app:errorEnabled="true"
+                    app:hintTextAppearance="@style/CustomTextAppearance"
+                    app:errorTextAppearance="@style/ErrorTextAppearance"
+                    android:layout_weight="1">
 
-                <EditText
-                    android:id="@+id/qualification"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                        android:paddingTop="@dimen/editTextPaddingTop"
+                        android:hint="Education"
+                        android:textSize="@dimen/job_form_text_size"
+                        android:inputType="text"
+                        android:maxLines="1"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/graduation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_rect02"
+                    android:layout_marginTop="-1dp"
+                    android:paddingTop="@dimen/text_layout_paddin_top"
+                    app:errorEnabled="true"
+                    app:hintTextAppearance="@style/CustomTextAppearance"
+                    app:errorTextAppearance="@style/ErrorTextAppearance"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                        android:paddingTop="@dimen/editTextPaddingTop"
+                        android:hint="Graduation"
+                        android:textSize="@dimen/job_form_text_size"
+                        android:inputType="text"
+                        android:maxLines="1"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="Job Title"
+                app:hintTextAppearance="@style/spinnerHint"
+                android:orientation="horizontal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/job"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="@dimen/form_text_size"
+                    android:background="@drawable/shape_rect02"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="Visa"
+                app:hintTextAppearance="@style/spinnerHint"
+                android:orientation="horizontal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/visa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="@dimen/form_text_size"
+                    android:background="@drawable/shape_rect02"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/visaTypeParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="Visa Type"
+                app:hintTextAppearance="@style/spinnerHint"
+                android:orientation="horizontal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/visaType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="@dimen/form_text_size"
+                    android:background="@drawable/shape_rect02"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/workPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding" />
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="Accepted Work Place"
+                    android:textSize="@dimen/job_form_text_size"
+                    android:inputType="text"
+                    android:maxLines="1"/>
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="Have been to China"
+                app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Graduated (毕业时间):"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
-
-                <EditText
-                    android:id="@+id/graduationYear"
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/beenChina"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
+                    android:inputType="none"
                     android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding" />
+                    android:background="@drawable/shape_rect02"/>
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/yearsInChinaparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="How Many Years Were In China"
+                app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/bordersimple">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:visibility="gone">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Visa:"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
-
-                <RadioGroup
-                    android:id="@+id/visaRadioGroup"
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/yearsInChina"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/visaHave"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:text="Have (签证  有)"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/form_text_size"/>
-
-                    <RadioButton
-                        android:id="@+id/visaHaveNot"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:text="Haven't (无)"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/form_text_size"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
-
-                <Spinner
-                    android:id="@+id/visaSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:entries="@array/typeOfVisa"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light"
-                    android:spinnerMode="dropdown"
-                    android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
-
-                <Spinner
-                    android:id="@+id/workspaceSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="@dimen/_3sdp"                    android:entries="@array/workSpace"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light"
-                    android:spinnerMode="dropdown"
-                    android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/bordersimple">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Have been to China (是否去过中国):"
-                    android:textColorHint="@color/colorPrimary"
+                    android:inputType="none"
                     android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
+                    android:background="@drawable/shape_rect02"/>
 
-                <RadioGroup
-                    android:id="@+id/beenChinaRadioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <RadioButton
-                        android:id="@+id/yesRadio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:text="Yes (是)"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/form_text_size"/>
-
-                    <RadioButton
-                        android:id="@+id/noRadio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:text="No(没有)"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/form_text_size"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="Work Experience"
+                app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Work Experience (工作经验):"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
-
-                <EditText
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/experience"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
+                    android:inputType="none"
                     android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding" />
+                    android:background="@drawable/shape_rect02"/>
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="Current Residence (现居住地)"
+                app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="When can join (何时可上岗):"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
-
-                <EditText
-                    android:id="@+id/whenCanJoin"
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/residence"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
+                    android:inputType="none"
                     android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding" />
+                    android:background="@drawable/shape_rect02"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
-
-                <Spinner
-                    android:id="@+id/residenceSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
-                    android:entries="@array/residence"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light"
-                    android:spinnerMode="dropdown"
-                    android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/bordersimple">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Job type (职业):"
-                    android:textColorHint="@color/colorPrimary"
-                    android:textSize="@dimen/form_text_size"
-                    android:textColor="@color/colorPrimary"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/form_field_padding"
-                    />
-
-                <RadioGroup
-                    android:id="@+id/jobTypeRadioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/jobFullTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:text="Full Time (全职)"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/form_text_size"/>
-
-                    <RadioButton
-                        android:id="@+id/jobPartTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleX="0.7"
-                        android:scaleY="0.7"
-                        android:text="Part Time (兼职)"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/form_text_size"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/submitBtn"
@@ -526,6 +407,7 @@
                 android:text="Submit"
                 android:textColor="@color/white"
                 android:textSize="@dimen/button_text_size"/>
+
 
         </LinearLayout>
 

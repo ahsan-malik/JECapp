@@ -13,4 +13,11 @@ public class Helper {
         return adapter;
     }
 
+    public static ArrayAdapter<String> getAutoCompleteAdapter(Context context){
+        String[] type = new String[] {"Bed-sitter", "Single", "1- Bedroom", "2- Bedroom","3- Bedroom"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.spinner_item, type);
+        return adapter;
+    }
+
 }
