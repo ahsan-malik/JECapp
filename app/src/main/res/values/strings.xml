@@ -25,10 +25,13 @@
     <string name="current_residence">Current Residence / 现居住地</string>
     <string name="submit">Submit / 提交</string>
     <string name="when_can_join">When Can Join / 何时可上岗</string>
+    <string name="email">Email (邮件)</string>
+    <string name="contact_number">Contact Number (联系电话)</string>
+    <string name="wechat">WeChat (微信号)</string>
+    <string name="self">Self (本人)</string>
 
 
     <string-array name="agentArray">
-        <item>Agent Reference (代理人)</item>
         <item>JEC1</item>
         <item>JEC2</item>
         <item>JEC3</item>

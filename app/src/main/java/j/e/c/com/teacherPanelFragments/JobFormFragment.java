@@ -1,5 +1,8 @@
 package j.e.c.com.teacherPanelFragments;
 
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -111,15 +115,31 @@ public class JobFormFragment extends Fragment {
         //workspaceSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.workSpace, getContext()));
         //residenceSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.residence, getContext()));
 
+        DatePickerDialog.OnDateSetListener onDateSetListener = (view, year, month, dayOfMonth) -> {
+            int mMonth = month + 1;
+            String mDate = dayOfMonth + "-" + mMonth + "-" + year;
+            whenCanJoin.getEditText().setText(mDate);
+        };
+
         String pattern = "dd-MM-yy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         Date date = new Date();
         whenCanJoin.getEditText().setText(simpleDateFormat.format(date));
-        whenCanJoin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        whenCanJoin.getEditText().setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int month = calendar.get(Calendar.MONTH);
+            int year = calendar.get(Calendar.YEAR);
 
-            }
+            DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.Theme_MaterialComponents_Dialog_MinWidth, onDateSetListener, year, month, day);
+            datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            datePickerDialog.show();
         });
+
+
+
+
+
     }
 }

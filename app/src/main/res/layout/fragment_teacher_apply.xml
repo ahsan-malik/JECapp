@@ -61,55 +61,38 @@
                 <TextView
                     android:id="@+id/self"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Self (本人)"
+                    android:layout_height="match_parent"
+                    android:text="@string/self"
                     android:textSize="@dimen/form_text_size"
                     android:textColor="@color/colorPrimary"
                     android:background="@drawable/bordersimple"
                     android:paddingHorizontal="5dp"
-                    android:paddingVertical="@dimen/form_field_padding" />
+                    android:gravity="center"/>
 
 
                 <!-- agent spinnnner -->
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-1dp"
+                    android:background="@drawable/shape_rect02"
+                    android:hint="Agent Reference (代理人)"
+                    app:hintTextAppearance="@style/spinnerHint"
                     android:orientation="horizontal"
-                    android:background="@drawable/bordersimple">
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                    <Spinner
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                         android:id="@+id/agentSpinner"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:entries="@array/agentArray"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        android:spinnerMode="dropdown"
-                        android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:textSize="@dimen/form_text_size"
+                        android:background="@drawable/shape_rect02"/>
 
-                </LinearLayout>
-
+                </com.google.android.material.textfield.TextInputLayout>
 
 
 
-            </LinearLayout>
-
-            <!-- row2 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
-
-                <Spinner
-                    android:id="@+id/nationalitySpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:entries="@array/nationalityArray"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light"
-                    android:spinnerMode="dropdown"
-                    android:dropDownVerticalOffset="@dimen/drop_down_offset_vertical"/>
 
             </LinearLayout>
 
@@ -136,48 +119,81 @@
 
             </LinearLayout>
 
-            <!-- row4 email -->
-            <EditText
+            <!--email -->
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:hint="Email (邮件)"
-                android:textColorHint="@color/colorPrimary"
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:background="@drawable/bordersimple"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:paddingVertical="@dimen/form_field_padding" />
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
 
-            <!-- row5 contact -->
-            <EditText
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="@string/email"
+                    android:textSize="@dimen/job_form_text_size"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--contact -->
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:hint="Contact Number (联系电话)"
-                android:textColorHint="@color/colorPrimary"
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:background="@drawable/bordersimple"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:paddingVertical="@dimen/form_field_padding" />
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="@string/contact_number"
+                    android:textSize="@dimen/job_form_text_size"
+                    android:inputType="phone"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            <!-- row6 wechat -->
-            <EditText
-                android:id="@+id/weChat"
+            <!--we chat -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/wechat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:hint="WeChat (微信号)"
-                android:textColorHint="@color/colorPrimary"
-                android:textSize="@dimen/form_text_size"
-                android:textColor="@color/colorPrimary"
-                android:background="@drawable/bordersimple"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:paddingVertical="@dimen/form_field_padding" />
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="@string/wechat"
+                    android:textSize="@dimen/job_form_text_size"
+                    android:inputType="text"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!--row7 live selfie-->
             <LinearLayout
