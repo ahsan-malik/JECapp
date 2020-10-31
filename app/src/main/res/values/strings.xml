@@ -29,6 +29,9 @@
     <string name="contact_number">Contact Number (联系电话)</string>
     <string name="wechat">WeChat (微信号)</string>
     <string name="self">Self (本人)</string>
+    <string name="agent_reference">Agent Reference (代理人)</string>
+    <string name="your_country">Your Country</string>
+    <string name="apply_for_teaching_jobs_n">Apply For Teaching Jobs\n申请工作</string>
 
 
     <string-array name="agentArray">
@@ -91,7 +94,7 @@
 
     <string-array name="visa">
         <item>Have</item>
-        <item>Havent</item>
+        <item>Haven\'t</item>
     </string-array>
 
     <string-array name="typeOfVisa">

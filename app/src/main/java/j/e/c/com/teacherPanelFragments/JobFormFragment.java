@@ -17,6 +17,7 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.hbb20.CountryCodePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,6 +25,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
 
@@ -46,8 +48,6 @@ public class JobFormFragment extends Fragment {
     AppCompatAutoCompleteTextView beenChina;
     @BindView(R.id.experience)
     AppCompatAutoCompleteTextView experience;
-    @BindView(R.id.residence)
-    AppCompatAutoCompleteTextView residence;
     @BindView(R.id.backArrow)
     ImageView backArrow;
     @BindView(R.id.toolBar)
@@ -72,6 +72,12 @@ public class JobFormFragment extends Fragment {
     TextInputLayout workPlace;
     @BindView(R.id.whenCanJoin)
     TextInputLayout whenCanJoin;
+    @BindView(R.id.visaQualified)
+    AppCompatAutoCompleteTextView visaQualified;
+    @BindView(R.id.countrySpinner)
+    CountryCodePicker countrySpinner;
+    @BindView(R.id.residence)
+    TextInputLayout residence;
 
     @Nullable
     @Override
@@ -92,7 +98,7 @@ public class JobFormFragment extends Fragment {
         yearsInChina.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.yearsArray, getContext()));
         experience.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.yearsArray, getContext()));
         visaType.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.typeOfVisa, getContext()));
-        residence.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.residence, getContext()));
+        visaQualified.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.yesNoArray, getContext()));
         visa.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.visa, getContext()));
         visa.setOnItemClickListener((parent, view, position, id) -> {
             //Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_LONG).show();
@@ -137,9 +143,10 @@ public class JobFormFragment extends Fragment {
             datePickerDialog.show();
         });
 
+    }
 
-
-
-
+    @OnClick(R.id.backArrow)
+    public void onViewClicked() {
+        getFragmentManager().popBackStack();
     }
 }

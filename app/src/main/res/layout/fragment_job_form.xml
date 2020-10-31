@@ -53,7 +53,7 @@
         <ImageView
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_70sdp"
-            android:src="@drawable/logocompany"/>
+            android:src="@drawable/recurmentlogo"/>
 
             <!--Name -->
             <com.google.android.material.textfield.TextInputLayout
@@ -126,6 +126,40 @@
                     android:background="@drawable/shape_rect02"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- row3 country -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-1dp"
+                android:orientation="vertical"
+                android:background="@drawable/bordersimple">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:text="@string/your_country"
+                    android:textSize="@dimen/form_text_size"
+                    android:textColor="#808080"/>
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/countrySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:ccp_autoDetectCountry="true"
+
+                    app:ccp_showFullName="true"
+                    app:ccp_showPhoneCode="false"
+                    app:ccp_showNameCode="false"
+
+                    app:ccp_textSize="@dimen/form_text_size"
+                    app:ccp_textGravity="LEFT"
+                    app:ccp_contentColor="@color/colorPrimary"
+                    app:ccpDialog_textColor="@color/colorPrimary"/>
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -208,6 +242,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape_rect02"
                     android:layout_marginTop="-1dp"
+                    android:layout_marginLeft="-1dp"
                     android:paddingTop="@dimen/text_layout_paddin_top"
                     app:errorEnabled="true"
                     app:hintTextAppearance="@style/CustomTextAppearance"
@@ -283,6 +318,26 @@
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/visaType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="@dimen/form_text_size"
+                    android:background="@drawable/shape_rect02"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rect02"
+                android:layout_marginTop="-1dp"
+                android:hint="Qualified For Work Visa"
+                app:hintTextAppearance="@style/spinnerHint"
+                android:orientation="horizontal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/visaQualified"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
@@ -403,24 +458,36 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/residence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="@string/current_residence"
-                app:hintTextAppearance="@style/spinnerHint"
-                android:orientation="horizontal"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+                android:paddingTop="@dimen/text_layout_paddin_top"
+                app:errorEnabled="true"
+                app:hintTextAppearance="@style/CustomTextAppearance"
+                app:errorTextAppearance="@style/ErrorTextAppearance">
 
-                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/residence"
+                <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:textSize="@dimen/form_text_size"
-                    android:background="@drawable/shape_rect02"/>
+                    android:background="@null"
+                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
+                    android:paddingTop="@dimen/editTextPaddingTop"
+                    android:hint="@string/current_residence"
+                    android:textSize="@dimen/job_form_text_size"
+                    android:inputType="text"
+                    android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:textSize="@dimen/form_text_size"
+                android:text="I’m agreed that I want to find an English teaching job in China and I’m well qualified for it."/>
 
             <Button
                 android:id="@+id/submitBtn"

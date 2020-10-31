@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="-1dp"
                     android:background="@drawable/shape_rect02"
-                    android:hint="Agent Reference (代理人)"
+                    android:hint="@string/agent_reference"
                     app:hintTextAppearance="@style/spinnerHint"
                     android:orientation="horizontal"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
@@ -96,28 +96,9 @@
 
             </LinearLayout>
 
-            <!-- row3 country -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal"
-                android:background="@drawable/bordersimple">
 
-                <com.hbb20.CountryCodePicker
-                    android:id="@+id/countrySpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:ccp_showFullName="true"
-                    app:ccp_showPhoneCode="false"
-                    app:ccp_showNameCode="false"
 
-                    app:ccp_textSize="@dimen/form_text_size"
-                    app:ccp_textGravity="LEFT"
-                    app:ccp_contentColor="@color/colorPrimary"
-                    app:ccpDialog_textColor="@color/colorPrimary"/>
 
-            </LinearLayout>
 
             <!--email -->
             <com.google.android.material.textfield.TextInputLayout

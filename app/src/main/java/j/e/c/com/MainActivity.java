@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import j.e.c.com.teacherPanelFragments.HomeFragment;
+import j.e.c.com.teacherPanelFragments.ProfileFragment;
 import j.e.c.com.teacherPanelFragments.RegistrationFragment;
 
 
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.navigation_person:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegistrationFragment()).commit();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegistrationFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                     return true;
                 case R.id.navigation_home:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
