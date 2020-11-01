@@ -21,72 +21,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_navigate_before_24"/>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:text="My Profile"
-            android:textSize="@dimen/header_text_size"
-            android:textStyle="bold"
-            />
-
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/_15sdp"
-        android:paddingVertical="5dp"
-        android:elevation="@dimen/_2sdp"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Profile Photo"
-            android:textColorHint="#000000"
-            android:letterSpacing="0.1"
-            android:textSize="@dimen/form_text_size"
-            android:textColor="#000000"
-            android:layout_centerVertical="true"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <com.blogspot.atifsoftwares.circularimageview.CircularImageView
-            android:id="@+id/profilePhoto"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:src="@drawable/khabib"
-            app:c_border="true"
-            app:c_border_color="#4A97E4"
-            app:c_border_width="1dp"
-            app:c_shadow="true"
-            app:c_shadow_color="#000"
-            app:c_shadow_gravity="end"
-            app:c_shadow_radius="5.5" />
-
-            <ImageView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-        </LinearLayout>
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/name"
+        android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/_15sdp"
@@ -96,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/name"
+            android:hint="Gender"
             android:textColorHint="#000000"
             android:letterSpacing="0.1"
             android:textSize="@dimen/form_text_size"
@@ -112,10 +50,10 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/nameText"
+                android:id="@+id/maleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="JOhN"/>
+                android:text="Male"/>
 
             <ImageView
                 android:layout_height="wrap_content"
@@ -127,9 +65,8 @@
 
 
     </RelativeLayout>
-
     <RelativeLayout
-        android:id="@+id/id"
+        android:id="@+id/region"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/_15sdp"
@@ -139,7 +76,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="JEC ID"
+            android:hint="Region"
             android:textColorHint="#000000"
             android:letterSpacing="0.1"
             android:textSize="@dimen/form_text_size"
@@ -155,10 +92,10 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/idText"
+                android:id="@+id/regionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CSA789789"/>
+                android:text="Tongzhou, Beijing"/>
 
             <ImageView
                 android:layout_height="wrap_content"
@@ -170,9 +107,8 @@
 
 
     </RelativeLayout>
-
     <RelativeLayout
-        android:id="@+id/more"
+        android:id="@+id/whatsUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/_15sdp"
@@ -180,29 +116,34 @@
         android:elevation="@dimen/_2sdp"
         android:background="@color/white">
         <TextView
+            android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="More"
+            android:hint="What\'s Up"
             android:textColorHint="#000000"
             android:letterSpacing="0.1"
             android:textSize="@dimen/form_text_size"
             android:textColor="#000000"
             android:layout_centerVertical="true"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/whatsUpText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/text"
+                android:layout_toLeftOf="@+id/icon"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:text="Everyday Smile 😁 and start new life \u0026 day"/>
 
             <ImageView
+                android:id="@+id/icon"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
                 app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
 
-        </LinearLayout>
+
 
 
 

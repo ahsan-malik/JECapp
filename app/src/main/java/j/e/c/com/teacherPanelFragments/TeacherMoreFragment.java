@@ -8,27 +8,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import java.util.Objects;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import j.e.c.com.R;
 
-public class ProfileFragment extends Fragment {
 
+public class TeacherMoreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_teacher_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_teacher_more, container, false);
         ButterKnife.bind(this, view);
         return view;
-    }
-
-    @OnClick(R.id.profile)
-    public void onViewClicked() {
-        FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, new TeacherMyProfileFragment()).addToBackStack(null).commit();
     }
 }

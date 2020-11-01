@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.hbb20.CountryCodePicker;
 
 import java.util.Objects;
 
@@ -50,6 +49,8 @@ public class TeacherApplyFragment extends Fragment {
     Button fillBtn;
     @BindView(R.id.self)
     TextView self;
+    @BindView(R.id.agentSpinnerParent)
+    TextInputLayout agentSpinnerParent;
 
     @Nullable
     @Override
@@ -90,12 +91,12 @@ public class TeacherApplyFragment extends Fragment {
                 if (!seflToogle) {
                     self.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.shape_react01));
                     self.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
-                    agentSpinner.setEnabled(false);
+                    agentSpinnerParent.setEnabled(false);
                     seflToogle = !seflToogle;
-                }else {
+                } else {
                     self.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.shape_rect02));
                     self.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
-                    agentSpinner.setEnabled(true);
+                    agentSpinnerParent.setEnabled(true);
                     seflToogle = !seflToogle;
                 }
                 break;
