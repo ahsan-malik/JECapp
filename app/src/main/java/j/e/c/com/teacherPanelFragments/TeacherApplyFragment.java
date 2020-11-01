@@ -34,8 +34,6 @@ public class TeacherApplyFragment extends Fragment {
 
     @BindView(R.id.agentSpinner)
     AppCompatAutoCompleteTextView agentSpinner;
-    @BindView(R.id.email)
-    TextInputLayout email;
     @BindView(R.id.contact)
     TextInputLayout contact;
     @BindView(R.id.wechat)

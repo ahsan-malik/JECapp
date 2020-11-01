@@ -98,33 +98,6 @@
 
 
 
-
-
-            <!--email -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_rect02"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:paddingTop="@dimen/text_layout_paddin_top"
-                app:errorEnabled="true"
-                app:hintTextAppearance="@style/CustomTextAppearance"
-                app:errorTextAppearance="@style/ErrorTextAppearance">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
-                    android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="@string/email"
-                    android:textSize="@dimen/job_form_text_size"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
             <!--contact -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/contact"
