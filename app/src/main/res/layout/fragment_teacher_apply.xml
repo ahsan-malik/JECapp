@@ -180,7 +180,7 @@
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
-                    android:src="@drawable/banner1"/>
+                    android:src="@drawable/banner1" />
 
 
             </LinearLayout>
@@ -213,7 +213,13 @@
                     android:textColor="@color/white"/>
 
 
+
             </LinearLayout>
+            <TextView
+                android:id="@+id/cvTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/form_text_size"/>
 
             <!--row9 Upload video-->
             <LinearLayout
@@ -244,7 +250,13 @@
                     android:textColor="@color/white"/>
 
 
+
             </LinearLayout>
+            <TextView
+                android:id="@+id/videoTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/form_text_size"/>
 
             <Button
                 android:id="@+id/fillBtn"

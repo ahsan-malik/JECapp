@@ -53,13 +53,12 @@
                 android:id="@+id/maleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Male"/>
+                android:text="Boy"/>
 
             <ImageView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
         </LinearLayout>
 
 
