@@ -32,11 +32,16 @@ public class TeacherFragment extends Fragment {
                 getFragmentManager().popBackStack();
                 break;
             case R.id.applyBtn:
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, new TeacherApplyFragment()).addToBackStack(null).commit();
+                openFragment(new TeacherApplyFragment());
                 break;
             case R.id.hireBtn:
+                openFragment(new DummyListingFragment());
                 break;
         }
+    }
+
+    void openFragment(Fragment fragment){
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
     }
 }

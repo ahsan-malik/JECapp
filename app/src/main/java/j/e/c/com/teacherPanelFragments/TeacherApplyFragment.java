@@ -24,11 +24,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.DexterError;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 
@@ -113,6 +111,7 @@ public class TeacherApplyFragment extends Fragment {
 
     }
 
+
     void updateSpinners() {
         agentSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.agentArray, getContext()));
     }
@@ -174,11 +173,8 @@ public class TeacherApplyFragment extends Fragment {
             public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
 
             }
-        }).withErrorListener(new PermissionRequestErrorListener() {
-            @Override
-            public void onError(DexterError dexterError) {
+        }).withErrorListener(dexterError -> {
 
-            }
         }).check();
     }
 
@@ -199,11 +195,8 @@ public class TeacherApplyFragment extends Fragment {
             public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
 
             }
-        }).withErrorListener(new PermissionRequestErrorListener() {
-            @Override
-            public void onError(DexterError dexterError) {
+        }).withErrorListener(dexterError -> {
 
-            }
         }).check();
     }
 
@@ -223,4 +216,5 @@ public class TeacherApplyFragment extends Fragment {
             }
         }).withErrorListener(dexterError -> Toast.makeText(getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show()).check();
     }
+
 }
