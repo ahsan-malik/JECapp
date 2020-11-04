@@ -32,6 +32,7 @@
     <string name="agent_reference">Agent Reference (代理人)</string>
     <string name="your_country">Your Country</string>
     <string name="apply_for_teaching_jobs_n">Apply For Teaching Jobs\n申请工作</string>
+    <string name="apply">Apply\n申请</string>
 
 
     <string-array name="agentArray">
