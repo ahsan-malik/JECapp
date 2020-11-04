@@ -216,8 +216,7 @@
                     android:id="@+id/cvImage"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/banner1"/>
+                    android:layout_weight="1"/>
 
             </LinearLayout>
             <TextView
@@ -259,7 +258,8 @@
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                     android:paddingLeft="@dimen/_10sdp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                    android:visibility="gone"/>
 
 
 
