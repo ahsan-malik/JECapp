@@ -33,6 +33,8 @@
     <string name="your_country">Your Country</string>
     <string name="apply_for_teaching_jobs_n">Apply For Teaching Jobs\n申请工作</string>
     <string name="apply">Apply\n申请</string>
+    <string name="live_selfie">Live Selfie (自拍照)</string>
+    <string name="upload_cv">Upload CV (上传简历)</string>
 
 
     <string-array name="agentArray">

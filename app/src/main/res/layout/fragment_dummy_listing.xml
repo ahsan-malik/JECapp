@@ -1301,19 +1301,16 @@
     </ScrollView>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="@dimen/_20sdp"
-        android:layout_below="@id/toolBar"
-        android:orientation="vertical"
-        android:gravity="center">
+
 
         <com.ncorti.slidetoact.SlideToActView
             android:id="@+id/lock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_60sdp"
             android:layout_marginHorizontal="@dimen/_40sdp"
+            android:elevation="@dimen/_1sdp"
             app:outer_color="@color/hintColorDull"
             app:text="Slide to unlock"
             app:text_color="@color/black"
@@ -1321,6 +1318,6 @@
             app:slider_icon_color="@color/black"
             />
 
-    </LinearLayout>
+
 
 </RelativeLayout>

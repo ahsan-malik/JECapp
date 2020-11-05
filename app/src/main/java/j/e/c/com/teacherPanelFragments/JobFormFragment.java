@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
@@ -145,8 +146,17 @@ public class JobFormFragment extends Fragment {
 
     }
 
-    @OnClick(R.id.backArrow)
-    public void onViewClicked() {
-        getFragmentManager().popBackStack();
+    @OnClick({R.id.backArrow, R.id.submitBtn})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.backArrow:
+                getFragmentManager().popBackStack();
+                break;
+            case R.id.submitBtn:
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new WelcomeFragment()).addToBackStack(null).commit();
+                break;
+        }
+
     }
 }

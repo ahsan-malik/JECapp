@@ -34,10 +34,6 @@
             />
 
 
-
-
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -46,12 +42,17 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/checked"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:gravity="center"
-            android:text="Welcome To JEC"
+            android:text="Welcome To J.E.C"
             android:textSize="@dimen/_30ssp"
             android:textColor="@color/red"
             android:textStyle="bold"/>
@@ -60,8 +61,12 @@
             android:id="@+id/goBtn"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/rehan_button_height"
+            android:paddingHorizontal="@dimen/_40sdp"
+            android:layout_marginVertical="@dimen/_40sdp"
             android:background="@drawable/buttonvertical"
-            android:text="Go Ahead"/>
+            android:text="Go Ahead"
+            android:textColor="@color/white"
+            android:textAllCaps="false"/>
 
 
     </LinearLayout>
