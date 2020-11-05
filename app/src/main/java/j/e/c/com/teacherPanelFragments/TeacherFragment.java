@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.R;
+import j.e.c.com.schoolPanelFragments.HireFormOneFragment;
 
 public class TeacherFragment extends Fragment {
 
@@ -35,7 +36,8 @@ public class TeacherFragment extends Fragment {
                 openFragment(new TeacherApplyFragment());
                 break;
             case R.id.hireBtn:
-                openFragment(new DummyListingFragment());
+                //openFragment(new DummyListingFragment());
+                openFragment(new HireFormOneFragment());
                 break;
         }
     }
@@ -44,4 +46,5 @@ public class TeacherFragment extends Fragment {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
     }
+
 }

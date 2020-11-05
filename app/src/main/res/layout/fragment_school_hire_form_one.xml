@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/shape_rect02"
-                android:hint="Demand"
+                android:hint="@string/demand"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
@@ -158,9 +158,9 @@
                     android:background="@null"
                     android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
                     android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="Applicant Name"
+                    android:hint="@string/applicant_name"
                     android:textSize="@dimen/job_form_text_size"
-                    android:inputType="phone"
+                    android:inputType="text"
                     android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -183,9 +183,8 @@
                     android:background="@null"
                     android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
                     android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="Position In School"
+                    android:hint="@string/position_in_school"
                     android:textSize="@dimen/job_form_text_size"
-                    android:inputType="phone"
                     android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -254,7 +253,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="School Licence Picture"
+                    android:text="@string/school_licence_picture"
                     android:textSize="@dimen/form_text_size"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"/>
@@ -265,7 +264,7 @@
                     android:layout_height="@dimen/_20sdp"
                     android:layout_weight="1"
                     android:background="@drawable/roundtextbackground"
-                    android:text="Upload"
+                    android:text="@string/upload"
                     android:textSize="@dimen/button_text_size_small"
                     android:textColor="@color/white"/>
 
@@ -289,7 +288,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:text="License Holder Live Picture With ID Card"
+                    android:text="@string/license_holder_live_picture_with_id_card"
                     android:textSize="@dimen/form_text_size"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"/>
@@ -318,7 +317,7 @@
                 android:layout_marginHorizontal="@dimen/_50sdp"
                 android:background="@drawable/roundtextbackground"
                 android:textAllCaps="false"
-                android:text="Fill The Form\n填写表格"
+                android:text="@string/fill_the_form_n"
                 android:textColor="@color/white"
                 android:textSize="@dimen/button_text_size"
                 android:paddingHorizontal="@dimen/_15sdp"/>

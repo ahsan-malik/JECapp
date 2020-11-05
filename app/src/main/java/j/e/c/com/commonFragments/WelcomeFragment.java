@@ -1,4 +1,4 @@
-package j.e.c.com.teacherPanelFragments;
+package j.e.c.com.commonFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

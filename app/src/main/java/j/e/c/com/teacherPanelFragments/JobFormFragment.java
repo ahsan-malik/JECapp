@@ -29,6 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
+import j.e.c.com.commonFragments.WelcomeFragment;
 
 public class JobFormFragment extends Fragment {
 

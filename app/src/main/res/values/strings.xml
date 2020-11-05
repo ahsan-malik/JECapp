@@ -35,6 +35,26 @@
     <string name="apply">Apply\n申请</string>
     <string name="live_selfie">Live Selfie (自拍照)</string>
     <string name="upload_cv">Upload CV (上传简历)</string>
+    <string name="upload">Upload</string>
+    <string name="school_licence_picture">School Licence Picture</string>
+    <string name="demand">Demand</string>
+    <string name="applicant_name">Applicant Name</string>
+    <string name="position_in_school">Position In School</string>
+    <string name="license_holder_live_picture_with_id_card">License Holder Live Picture With ID Card</string>
+    <string name="fill_the_form_n">Fill The Form\n填写表格</string>
+    <string name="apply_for_job_n">Apply For Job\n申请工作</string>
+    <string name="city">City</string>
+    <string name="full_time_part_time">(Full Time, Part Time)</string>
+    <string name="working_time">Working Time</string>
+    <string name="kids_age">Kids Age</string>
+    <string name="k_p_m">K/P/M</string>
+    <string name="arrival_date">Arrival Date</string>
+    <string name="native_or_not">Native or not</string>
+    <string name="requirements">Requirements</string>
+    <string name="number_of_teacher">Number of Teacher</string>
+    <string name="salary">Salary</string>
+    <string name="housing">Housing</string>
+    <string name="welcome_to_j_e_c">Welcome To J.E.C</string>
 
 
     <string-array name="agentArray">
@@ -47,6 +67,12 @@
     <string-array name="nationalityArray">
         <item>Native</item>
         <item>Non Native</item>
+    </string-array>
+
+    <string-array name="demandArray">
+        <item>Native</item>
+        <item>Non Native</item>
+        <item>Both</item>
     </string-array>
 
     <string-array name="genderArray">
@@ -111,7 +137,6 @@
 
 
     <string-array name="workSpace">
-        <item>Accepted work Space (可接受的工作地点)</item>
         <item>Beijing</item>
         <item>Shanghai</item>
         <item>Hong Kong</item>
