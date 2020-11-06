@@ -89,27 +89,22 @@
 
             <!--Full time part time -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/timeType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:paddingTop="@dimen/text_layout_paddin_top"
-                app:errorEnabled="true"
-                app:hintTextAppearance="@style/CustomTextAppearance"
-                app:errorTextAppearance="@style/ErrorTextAppearance">
+                android:hint="@string/full_time_part_time"
+                app:hintTextAppearance="@style/spinnerHint"
+                android:orientation="horizontal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/fullOrPart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
-                    android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="@string/full_time_part_time"
-                    android:textSize="@dimen/job_form_text_size"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:maxLength="3"/>
+                    android:inputType="none"
+                    android:textSize="@dimen/form_text_size"
+                    android:background="@drawable/shape_rect02"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,26 +161,22 @@
 
             <!--kpm -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/kpm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:paddingTop="@dimen/text_layout_paddin_top"
-                app:errorEnabled="true"
-                app:hintTextAppearance="@style/CustomTextAppearance"
-                app:errorTextAppearance="@style/ErrorTextAppearance">
+                android:hint="@string/k_p_m"
+                app:hintTextAppearance="@style/spinnerHint"
+                android:orientation="horizontal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/kpm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
-                    android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="@string/k_p_m"
-                    android:textSize="@dimen/job_form_text_size"
-                    android:inputType="text"
-                    android:maxLines="1"/>
+                    android:inputType="none"
+                    android:textSize="@dimen/form_text_size"
+                    android:background="@drawable/shape_rect02"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -210,32 +201,29 @@
                     android:hint="@string/arrival_date"
                     android:textSize="@dimen/job_form_text_size"
                     android:inputType="text"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:focusable="false"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--native or not -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/nativeOrNot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:paddingTop="@dimen/text_layout_paddin_top"
-                app:errorEnabled="true"
-                app:hintTextAppearance="@style/CustomTextAppearance"
-                app:errorTextAppearance="@style/ErrorTextAppearance">
+                android:hint="@string/native_or_not"
+                app:hintTextAppearance="@style/spinnerHint"
+                android:orientation="horizontal"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/nativeOrNot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:layout_marginHorizontal="@dimen/editText_marginHorizontal"
-                    android:paddingTop="@dimen/editTextPaddingTop"
-                    android:hint="@string/native_or_not"
-                    android:textSize="@dimen/job_form_text_size"
-                    android:inputType="text"
-                    android:maxLines="1"/>
+                    android:inputType="none"
+                    android:textSize="@dimen/form_text_size"
+                    android:background="@drawable/shape_rect02"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

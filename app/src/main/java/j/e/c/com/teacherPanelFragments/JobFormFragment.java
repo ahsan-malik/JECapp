@@ -1,8 +1,5 @@
 package j.e.c.com.teacherPanelFragments;
 
-import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +18,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -118,36 +114,14 @@ public class JobFormFragment extends Fragment {
                 yearsInChinaparent.setVisibility(View.GONE);
             }
         });
-        //nationality.setAdapter(Helper.getAutoCompleteAdapter(getContext()));
-        //visaSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.typeOfVisa, getContext()));
-        //workspaceSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.workSpace, getContext()));
-        //residenceSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.residence, getContext()));
-
-        DatePickerDialog.OnDateSetListener onDateSetListener = (view, year, month, dayOfMonth) -> {
-            int mMonth = month + 1;
-            String mDate = dayOfMonth + "-" + mMonth + "-" + year;
-            whenCanJoin.getEditText().setText(mDate);
-        };
 
         String pattern = "dd-MM-yy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         Date date = new Date();
         whenCanJoin.getEditText().setText(simpleDateFormat.format(date));
-        whenCanJoin.getEditText().setOnClickListener(v -> {
-            Calendar calendar = Calendar.getInstance();
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            int month = calendar.get(Calendar.MONTH);
-            int year = calendar.get(Calendar.YEAR);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.Theme_MaterialComponents_Dialog_MinWidth, onDateSetListener, year, month, day);
-            datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-            datePickerDialog.show();
-        });
-
     }
 
-    @OnClick({R.id.backArrow, R.id.submitBtn})
+    @OnClick({R.id.backArrow, R.id.submitBtn, R.id.whenCanJoin})
     public void onViewClicked(View view) {
         switch (view.getId()){
             case R.id.backArrow:
@@ -156,6 +130,9 @@ public class JobFormFragment extends Fragment {
             case R.id.submitBtn:
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, new WelcomeFragment()).addToBackStack(null).commit();
+                break;
+            case R.id.whenCanJoin:
+                Helper.setDate(whenCanJoin);
                 break;
         }
 

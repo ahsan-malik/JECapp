@@ -51,7 +51,7 @@
     <string name="arrival_date">Arrival Date</string>
     <string name="native_or_not">Native or not</string>
     <string name="requirements">Requirements</string>
-    <string name="number_of_teacher">Number of Teacher</string>
+    <string name="number_of_teacher">Number of Teachers</string>
     <string name="salary">Salary</string>
     <string name="housing">Housing</string>
     <string name="welcome_to_j_e_c">Welcome To J.E.C</string>
@@ -146,6 +146,12 @@
         <item>Hong Kong</item>
         <item>Guangzhou</item>
         <item>Macau</item>
+    </string-array>
+
+    <string-array name="kpmArray">
+        <item>Kindergarten</item>
+        <item>Primary</item>
+        <item>Middle School</item>
     </string-array>
 
     <string-array name="residence">
