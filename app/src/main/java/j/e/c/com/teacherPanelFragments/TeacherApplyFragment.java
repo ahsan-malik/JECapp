@@ -3,6 +3,7 @@ package j.e.c.com.teacherPanelFragments;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -93,10 +94,13 @@ public class TeacherApplyFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (resultCode == RESULT_OK && data != null) {
             switch (requestCode) {
                 case IMAGE_REQUEST_CODE:
-                    picture.setImageURI(data.getData());
+                    if (data.getData() != null)
+                        picture.setImageURI(data.getData());
+                    else
+                        picture.setImageBitmap((Bitmap) data.getExtras().get("data"));
                     break;
                 case VIDEO_REQUEST_CODE:
                     videoTextView.setVisibility(View.VISIBLE);
@@ -146,27 +150,34 @@ public class TeacherApplyFragment extends Fragment {
                 openCamera();
                 break;
             case R.id.uploadVideoBtn:
-                openGalleryForVideo();
+                getFileFromStorage(VIDEO_REQUEST_CODE);
                 break;
             case R.id.uploadCVbtn:
-                getResumeFromPhone();
+                getFileFromStorage(CV_REQUEST_CODE);
                 break;
         }
     }
 
-    private void getResumeFromPhone() {
+    private void getFileFromStorage(int requestCode){
         Dexter.withContext(getContext()).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                Intent intent = new Intent();
-                intent.setType("application/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select file"), CV_REQUEST_CODE);
+                switch (requestCode){
+                    case CV_REQUEST_CODE:
+                        Intent intent = new Intent();
+                        intent.setType("application/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(Intent.createChooser(intent, "Select file"), CV_REQUEST_CODE);
+                        break;
+                    case VIDEO_REQUEST_CODE:
+                        Intent videoIntent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(videoIntent , VIDEO_REQUEST_CODE);
+                        break;
+                }
             }
 
             @Override
             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
             }
 
             @Override
@@ -174,29 +185,7 @@ public class TeacherApplyFragment extends Fragment {
 
             }
         }).withErrorListener(dexterError -> {
-
-        }).check();
-    }
-
-    private void openGalleryForVideo() {
-        Dexter.withContext(getContext()).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
-            @Override
-            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent , VIDEO_REQUEST_CODE);
-            }
-
-            @Override
-            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
-            }
-
-            @Override
-            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-
-            }
-        }).withErrorListener(dexterError -> {
-
+            Toast.makeText(getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show();
         }).check();
     }
 

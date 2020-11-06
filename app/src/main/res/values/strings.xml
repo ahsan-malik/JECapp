@@ -55,6 +55,10 @@
     <string name="salary">Salary</string>
     <string name="housing">Housing</string>
     <string name="welcome_to_j_e_c">Welcome To J.E.C</string>
+    <string name="hire_teacher">Hire Teacher</string>
+    <string name="job_type">Job Type</string>
+    <string name="gender">Gender</string>
+    <string name="hire">Hire</string>
 
 
     <string-array name="agentArray">

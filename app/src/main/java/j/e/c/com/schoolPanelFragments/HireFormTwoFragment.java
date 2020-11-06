@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.R;
+import j.e.c.com.commonFragments.WelcomeFragment;
 
 public class HireFormTwoFragment extends Fragment {
     @Nullable
@@ -29,6 +31,8 @@ public class HireFormTwoFragment extends Fragment {
                 getFragmentManager().popBackStack();
                 break;
             case R.id.submitBtn:
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, new WelcomeFragment()).addToBackStack(null).commit();
                 break;
         }
     }

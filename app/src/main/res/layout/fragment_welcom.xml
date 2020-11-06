@@ -43,14 +43,14 @@
         android:layout_below="@id/topBar"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_100sdp"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
             app:lottie_rawRes="@raw/approved"
             app:lottie_autoPlay="true"
-            app:lottie_loop="true"/>
+            app:lottie_loop="false"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -83,12 +83,12 @@
         android:layout_below="@id/topBar"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
 
         <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
             app:lottie_rawRes="@raw/wait"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"/>
@@ -96,6 +96,7 @@
 
 
         <TextView
+            android:id="@+id/waitBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
@@ -103,7 +104,7 @@
             android:paddingVertical="@dimen/_5sdp"
             android:gravity="center"
             android:text="Waiting For Approval"
-            android:textSize="@dimen/_24ssp"
+            android:textSize="@dimen/_20ssp"
             android:textColor="@color/white"
             android:background="@drawable/buttonvertical"/>
 
