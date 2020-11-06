@@ -1,18 +1,15 @@
 package j.e.c.com.teacherPanelFragments;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,16 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.karumi.dexter.listener.single.PermissionListener;
 
-import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -44,12 +32,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class TeacherApplyFragment extends Fragment {
 
-    static final int IMAGE_REQUEST_CODE = 100;
-    static final int VIDEO_REQUEST_CODE = 101;
-    static final int CV_REQUEST_CODE = 102;
-
     boolean seflToogle = false;
-
 
     @BindView(R.id.agentSpinner)
     AppCompatAutoCompleteTextView agentSpinner;
@@ -96,17 +79,17 @@ public class TeacherApplyFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && data != null) {
             switch (requestCode) {
-                case IMAGE_REQUEST_CODE:
+                case Helper.IMAGE_REQUEST_CODE:
                     if (data.getData() != null)
                         picture.setImageURI(data.getData());
                     else
                         picture.setImageBitmap((Bitmap) data.getExtras().get("data"));
                     break;
-                case VIDEO_REQUEST_CODE:
+                case Helper.VIDEO_REQUEST_CODE:
                     videoTextView.setVisibility(View.VISIBLE);
                     videoTextView.setText(data.getData().toString());
                     break;
-                case CV_REQUEST_CODE:
+                case Helper.CV_REQUEST_CODE:
                     cvTextView.setVisibility(View.VISIBLE);
                     cvTextView.setText(data.getData().toString());
                     break;
@@ -120,14 +103,8 @@ public class TeacherApplyFragment extends Fragment {
         agentSpinner.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.agentArray, getContext()));
     }
 
-    @OnClick(R.id.fillBtn)
-    public void onViewClicked() {
-        FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, new JobFormFragment()).addToBackStack(null).commit();
-    }
-
     @SuppressLint("ResourceAsColor")
-    @OnClick({R.id.backArrow, R.id.self, R.id.camera, R.id.uploadVideoBtn, R.id.uploadCVbtn})
+    @OnClick({R.id.backArrow, R.id.self, R.id.camera, R.id.uploadVideoBtn, R.id.uploadCVbtn, R.id.fillBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
@@ -147,63 +124,18 @@ public class TeacherApplyFragment extends Fragment {
                 }
                 break;
             case R.id.camera:
-                openCamera();
+                Helper.openCamera(this, Helper.IMAGE_REQUEST_CODE);
                 break;
             case R.id.uploadVideoBtn:
-                getFileFromStorage(VIDEO_REQUEST_CODE);
+                Helper.getFileFromStorage(this, Helper.VIDEO_REQUEST_CODE);
                 break;
             case R.id.uploadCVbtn:
-                getFileFromStorage(CV_REQUEST_CODE);
+                Helper.getFileFromStorage(this, Helper.CV_REQUEST_CODE);
+                break;
+            case R.id.fillBtn:
+                Helper.fragmentTransaction(this, new JobFormFragment());
                 break;
         }
-    }
-
-    private void getFileFromStorage(int requestCode){
-        Dexter.withContext(getContext()).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
-            @Override
-            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                switch (requestCode){
-                    case CV_REQUEST_CODE:
-                        Intent intent = new Intent();
-                        intent.setType("application/*");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(Intent.createChooser(intent, "Select file"), CV_REQUEST_CODE);
-                        break;
-                    case VIDEO_REQUEST_CODE:
-                        Intent videoIntent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(videoIntent , VIDEO_REQUEST_CODE);
-                        break;
-                }
-            }
-
-            @Override
-            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-            }
-
-            @Override
-            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-
-            }
-        }).withErrorListener(dexterError -> {
-            Toast.makeText(getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show();
-        }).check();
-    }
-
-    private void openCamera() {
-        Dexter.withContext(getContext()).withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new MultiplePermissionsListener() {
-            @Override
-            public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
-                if (multiplePermissionsReport.areAllPermissionsGranted()) {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, IMAGE_REQUEST_CODE);
-                }
-            }
-
-            @Override
-            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
-
-            }
-        }).withErrorListener(dexterError -> Toast.makeText(getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show()).check();
     }
 
 }

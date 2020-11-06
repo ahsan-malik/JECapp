@@ -1,19 +1,40 @@
 package j.e.c.com.Others;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.provider.MediaStore;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 import j.e.c.com.R;
+import j.e.c.com.teacherPanelFragments.JobFormFragment;
 
 public class Helper {
+
+    public static final int IMAGE_REQUEST_CODE = 100;
+    public static final int VIDEO_REQUEST_CODE = 101;
+    public static final int CV_REQUEST_CODE = 102;
 
     public static ArrayAdapter<CharSequence> getSimpleSpinnerAdapter(int dataArray, Context context){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, dataArray, R.layout.spinner_item);
@@ -26,6 +47,11 @@ public class Helper {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context, R.layout.spinner_item, type);
         return adapter;
+    }
+
+    public static void fragmentTransaction(Fragment current, Fragment target){
+        FragmentTransaction transaction = Objects.requireNonNull(current.getActivity()).getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, target).addToBackStack(null).commit();
     }
 
     public static void setDate(TextInputLayout dateView){
@@ -46,6 +72,54 @@ public class Helper {
         Objects.requireNonNull(datePickerDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.BLACK));
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
         datePickerDialog.show();
+    }
+
+    public static void openCamera(Fragment fragment, int requestCode) {
+        Dexter.withContext(fragment.getContext()).withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new MultiplePermissionsListener() {
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
+                if (multiplePermissionsReport.areAllPermissionsGranted()) {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    fragment.startActivityForResult(intent, requestCode);
+                }
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
+
+            }
+        }).withErrorListener(dexterError -> Toast.makeText(fragment.getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show()).check();
+    }
+
+    public static void getFileFromStorage(Fragment fragment, int requestCode){
+        Dexter.withContext(fragment.getContext()).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                switch (requestCode){
+                    case CV_REQUEST_CODE:
+                        Intent intent = new Intent();
+                        intent.setType("application/*");
+                        intent.setAction(Intent.ACTION_GET_CONTENT);
+                        fragment.startActivityForResult(Intent.createChooser(intent, "Select file"), CV_REQUEST_CODE);
+                        break;
+                    case VIDEO_REQUEST_CODE:
+                        Intent videoIntent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+                        fragment.startActivityForResult(videoIntent , VIDEO_REQUEST_CODE);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+
+            }
+        }).withErrorListener(dexterError -> {
+            Toast.makeText(fragment.getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show();
+        }).check();
     }
 
 }
