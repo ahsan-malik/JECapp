@@ -119,27 +119,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- demand spinner -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/shape_rect02"
-                android:hint="@string/demand"
-                app:hintTextAppearance="@style/spinnerHint"
-                android:orientation="horizontal"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
-
-                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/demandSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:textSize="@dimen/form_text_size"
-                    android:background="@drawable/shape_rect02"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
             <!--applicant name -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/applicantName"

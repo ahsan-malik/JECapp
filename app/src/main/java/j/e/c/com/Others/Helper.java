@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -120,6 +122,24 @@ public class Helper {
         }).withErrorListener(dexterError -> {
             Toast.makeText(fragment.getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show();
         }).check();
+    }
+
+    public static boolean validateField(TextInputLayout textInputLayout){
+        if (TextUtils.isEmpty(textInputLayout.getEditText().getText().toString())) {
+            textInputLayout.getEditText().setError("Field can't be empty");
+            return false;
+        }else
+            textInputLayout.setError(null);
+        return true;
+    }
+
+    public static boolean validateField(AppCompatAutoCompleteTextView spinner){
+        if (TextUtils.isEmpty(spinner.getText().toString())) {
+            spinner.setError("");
+            return false;
+        }else
+            spinner.setError(null);
+        return true;
     }
 
 }

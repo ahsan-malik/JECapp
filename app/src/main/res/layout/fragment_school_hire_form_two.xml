@@ -93,13 +93,13 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="@string/full_time_part_time"
+                android:hint="@string/job_title"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/fullOrPart"
+                    android:id="@+id/jobTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
@@ -206,19 +206,19 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--native or not -->
+            <!--demand -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rect02"
                 android:layout_marginTop="-1dp"
-                android:hint="@string/native_or_not"
+                android:hint="@string/demand"
                 app:hintTextAppearance="@style/spinnerHint"
                 android:orientation="horizontal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/nativeOrNot"
+                    android:id="@+id/demand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"

@@ -1,6 +1,7 @@
 package j.e.c.com.teacherPanelFragments;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,8 +129,8 @@ public class JobFormFragment extends Fragment {
                 getFragmentManager().popBackStack();
                 break;
             case R.id.submitBtn:
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, new WelcomeFragment()).addToBackStack(null).commit();
+                if (validateFields())
+                    Helper.fragmentTransaction(this, new WelcomeFragment());
                 break;
             case R.id.whenCanJoin:
                 Helper.setDate(whenCanJoin);
@@ -137,4 +138,49 @@ public class JobFormFragment extends Fragment {
         }
 
     }
+
+    boolean validateFields(){
+        boolean b = true;
+        if(!Helper.validateField(name))
+            b = false;
+        if(!Helper.validateField(age))
+            b = false;
+        if(!Helper.validateField(nationality))
+            b = false;
+        if(!Helper.validateField(gender))
+            b = false;
+        if(!Helper.validateField(salary))
+            b = false;
+        if(!Helper.validateField(education))
+            b = false;
+        if(!Helper.validateField(graduation))
+            b = false;
+        if(!Helper.validateField(job))
+            b = false;
+        if(!Helper.validateField(visa))
+            b = false;
+        else if (TextUtils.equals(visa.getText().toString(), "Have")) {
+            if (!Helper.validateField(visaType))
+                b = false;
+        }
+        if(!Helper.validateField(visaQualified))
+            b = false;
+        if(!Helper.validateField(workPlace))
+            b = false;
+        if(!Helper.validateField(beenChina))
+            b = false;
+        else if (TextUtils.equals(beenChina.getText().toString(), "Yes")) {
+            if (!Helper.validateField(yearsInChina))
+                b = false;
+        }
+        if(!Helper.validateField(experience))
+            b = false;
+        if(!Helper.validateField(whenCanJoin))
+            b = false;
+        if(!Helper.validateField(residence))
+            b = false;
+
+        return b;
+    }
+
 }

@@ -80,10 +80,7 @@ public class TeacherApplyFragment extends Fragment {
         if (resultCode == RESULT_OK && data != null) {
             switch (requestCode) {
                 case Helper.IMAGE_REQUEST_CODE:
-                    if (data.getData() != null)
-                        picture.setImageURI(data.getData());
-                    else
-                        picture.setImageBitmap((Bitmap) data.getExtras().get("data"));
+                    picture.setImageBitmap((Bitmap) data.getExtras().get("data"));
                     break;
                 case Helper.VIDEO_REQUEST_CODE:
                     videoTextView.setVisibility(View.VISIBLE);

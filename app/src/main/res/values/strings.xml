@@ -47,7 +47,7 @@
     <string name="full_time_part_time">(Full Time, Part Time)</string>
     <string name="working_time">Working Time</string>
     <string name="kids_age">Kids Age</string>
-    <string name="k_p_m">K/P/M</string>
+    <string name="k_p_m">K/P/M/U/T</string>
     <string name="arrival_date">Arrival Date</string>
     <string name="native_or_not">Native or not</string>
     <string name="requirements">Requirements</string>
@@ -76,7 +76,7 @@
     <string-array name="demandArray">
         <item>Native</item>
         <item>Non Native</item>
-        <item>Both</item>
+        <item>Native &amp; Non Native</item>
     </string-array>
 
     <string-array name="genderArray">
@@ -152,6 +152,8 @@
         <item>Kindergarten</item>
         <item>Primary</item>
         <item>Middle School</item>
+        <item>University</item>
+        <item>Training Center</item>
     </string-array>
 
     <string-array name="residence">
