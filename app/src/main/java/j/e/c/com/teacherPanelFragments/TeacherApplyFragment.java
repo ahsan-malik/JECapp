@@ -16,11 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +55,10 @@ public class TeacherApplyFragment extends Fragment {
     TextView cvTextView;
     @BindView(R.id.videoTextView)
     TextView videoTextView;
+    @BindView(R.id.beautyPicImage)
+    ImageView beautyPicImage;
+    @BindView(R.id.beautyPicTextView)
+    TextView beautyPicTextView;
 
     @Nullable
     @Override
@@ -79,8 +80,11 @@ public class TeacherApplyFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && data != null) {
             switch (requestCode) {
-                case Helper.IMAGE_REQUEST_CODE:
+                case Helper.CAPTURE_REQUEST_CODE:
                     picture.setImageBitmap((Bitmap) data.getExtras().get("data"));
+                    break;
+                case Helper.IMAGE_REQUEST_CODE:
+                    beautyPicImage.setImageURI(data.getData());
                     break;
                 case Helper.VIDEO_REQUEST_CODE:
                     videoTextView.setVisibility(View.VISIBLE);
@@ -101,7 +105,7 @@ public class TeacherApplyFragment extends Fragment {
     }
 
     @SuppressLint("ResourceAsColor")
-    @OnClick({R.id.backArrow, R.id.self, R.id.camera, R.id.uploadVideoBtn, R.id.uploadCVbtn, R.id.fillBtn})
+    @OnClick({R.id.backArrow, R.id.self, R.id.camera, R.id.uploadBeautyPicBtn, R.id.uploadVideoBtn, R.id.uploadCVbtn, R.id.fillBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
@@ -121,7 +125,10 @@ public class TeacherApplyFragment extends Fragment {
                 }
                 break;
             case R.id.camera:
-                Helper.openCamera(this, Helper.IMAGE_REQUEST_CODE);
+                Helper.openCamera(this, Helper.CAPTURE_REQUEST_CODE);
+                break;
+            case R.id.uploadBeautyPicBtn:
+                Helper.getFileFromStorage(this, Helper.IMAGE_REQUEST_CODE);
                 break;
             case R.id.uploadVideoBtn:
                 Helper.getFileFromStorage(this, Helper.VIDEO_REQUEST_CODE);

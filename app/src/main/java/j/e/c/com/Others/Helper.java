@@ -34,9 +34,10 @@ import j.e.c.com.teacherPanelFragments.JobFormFragment;
 
 public class Helper {
 
-    public static final int IMAGE_REQUEST_CODE = 100;
+    public static final int CAPTURE_REQUEST_CODE = 100;
     public static final int VIDEO_REQUEST_CODE = 101;
     public static final int CV_REQUEST_CODE = 102;
+    public static final int IMAGE_REQUEST_CODE = 103;
 
     public static ArrayAdapter<CharSequence> getSimpleSpinnerAdapter(int dataArray, Context context){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, dataArray, R.layout.spinner_item);
@@ -99,10 +100,10 @@ public class Helper {
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                 switch (requestCode){
                     case CV_REQUEST_CODE:
-                        Intent intent = new Intent();
-                        intent.setType("application/*");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);
-                        fragment.startActivityForResult(Intent.createChooser(intent, "Select file"), CV_REQUEST_CODE);
+                    case IMAGE_REQUEST_CODE:
+                        Intent intent = new Intent(Intent.ACTION_PICK);
+                        intent.setType("image/*");
+                        fragment.startActivityForResult(intent, requestCode);
                         break;
                     case VIDEO_REQUEST_CODE:
                         Intent videoIntent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);

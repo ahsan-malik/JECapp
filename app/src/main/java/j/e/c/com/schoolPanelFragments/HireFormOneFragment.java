@@ -3,7 +3,6 @@ package j.e.c.com.schoolPanelFragments;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +70,7 @@ public class HireFormOneFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && data != null) {
             switch (requestCode) {
-                case Helper.IMAGE_REQUEST_CODE:
+                case Helper.CAPTURE_REQUEST_CODE:
                     if (data.getData() != null)
                         picture.setImageURI(data.getData());
                     else
@@ -106,7 +105,7 @@ public class HireFormOneFragment extends Fragment {
                 Helper.getFileFromStorage(this, Helper.CV_REQUEST_CODE);
                 break;
             case R.id.camera:
-                Helper.openCamera(this, Helper.IMAGE_REQUEST_CODE);
+                Helper.openCamera(this, Helper.CAPTURE_REQUEST_CODE);
                 break;
             case R.id.fillBtn:
                 if (validateField())

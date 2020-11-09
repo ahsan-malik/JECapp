@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JECapp</string>
+    <string name="app_name">JEC</string>
     <string name="title_home">Home/家</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -59,6 +59,7 @@
     <string name="job_type">Job Type</string>
     <string name="gender">Gender</string>
     <string name="hire">Hire</string>
+    <string name="upload_your_picture">Upload Your Good Looking Picture</string>
 
 
     <string-array name="agentArray">
