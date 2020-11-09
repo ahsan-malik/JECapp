@@ -24,6 +24,21 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layouts/activities',
+                            'src/main/res/layouts/school-fragments',
+                            'src/main/res/layouts/common-fragments',
+                            'src/main/res/layouts/teacher-fragments',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
+        }
+    }
+
 }
 
 dependencies {
