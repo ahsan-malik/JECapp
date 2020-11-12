@@ -77,6 +77,7 @@ public class HireFormOneFragment extends Fragment {
                         picture.setImageBitmap((Bitmap) data.getExtras().get("data"));
                     break;
                 case Helper.CV_REQUEST_CODE:
+                    licenseImage.setImageURI(data.getData());
                     break;
             }
         }

@@ -3,14 +3,18 @@ package j.e.c.com.Others;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,7 +34,6 @@ import java.util.List;
 import java.util.Objects;
 
 import j.e.c.com.R;
-import j.e.c.com.teacherPanelFragments.JobFormFragment;
 
 public class Helper {
 
@@ -85,11 +88,16 @@ public class Helper {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     fragment.startActivityForResult(intent, requestCode);
                 }
+                // check for permanent denial of any permission
+                if (multiplePermissionsReport.isAnyPermissionPermanentlyDenied()) {
+                    // show alert dialog navigating to Settings
+                    showSettingsDialog(fragment);
+                }
             }
 
             @Override
             public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
-
+                permissionToken.continuePermissionRequest();
             }
         }).withErrorListener(dexterError -> Toast.makeText(fragment.getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show()).check();
     }
@@ -114,16 +122,42 @@ public class Helper {
 
             @Override
             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                // check for permanent denial of permission
+                if (permissionDeniedResponse.isPermanentlyDenied()) {
+                    showSettingsDialog(fragment);
+                }
             }
 
             @Override
             public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-
+                permissionToken.continuePermissionRequest();
             }
         }).withErrorListener(dexterError -> {
             Toast.makeText(fragment.getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show();
         }).check();
     }
+
+    private static void showSettingsDialog(Fragment fragment) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getContext());
+        builder.setTitle("Need Permissions");
+        builder.setMessage("This app needs permission to use this feature. You can grant them in app settings.");
+        builder.setPositiveButton("GOTO SETTINGS", (dialog, which) -> {
+            dialog.cancel();
+            openSettings(fragment);
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.show();
+
+    }
+
+    // navigating user to app settings
+    private static void openSettings(Fragment fragment) {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", fragment.getContext().getPackageName(), null);
+        intent.setData(uri);
+        fragment.startActivityForResult(intent, 101);
+    }
+
 
     public static boolean validateField(TextInputLayout textInputLayout){
         if (TextUtils.isEmpty(textInputLayout.getEditText().getText().toString())) {

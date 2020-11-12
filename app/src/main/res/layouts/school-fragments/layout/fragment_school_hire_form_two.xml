@@ -155,7 +155,8 @@
                     android:hint="@string/kids_age"
                     android:textSize="@dimen/job_form_text_size"
                     android:inputType="number"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:maxLength="2"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
