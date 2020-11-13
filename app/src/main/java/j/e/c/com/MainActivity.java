@@ -7,7 +7,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import j.e.c.com.chatFragments.ChatFragment;
 import j.e.c.com.teacherPanelFragments.HomeFragment;
 import j.e.c.com.teacherPanelFragments.ProfileFragment;
 import j.e.c.com.teacherPanelFragments.RegistrationFragment;
@@ -36,16 +38,21 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.navigation_person:
                     //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RegistrationFragment()).commit();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).addToBackStack(null).commit();
+                    openFragment(new ProfileFragment());
                     return true;
                 case R.id.navigation_home:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).addToBackStack(null).commit();
+                    openFragment(new HomeFragment());
                     return true;
                 case R.id.navigation_chat:
+                    openFragment(new ChatFragment());
                     return true;
             }
 
             return true;
         });
+    }
+
+    private void openFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
     }
 }
