@@ -1,5 +1,7 @@
 package j.e.c.com.teacherPanelFragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +10,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import java.util.Objects;
+import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
+import com.theartofdev.edmodo.cropper.CropImage;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import j.e.c.com.Others.Helper;
+import j.e.c.com.Others.Prefrence;
 import j.e.c.com.R;
 
+import static android.app.Activity.RESULT_OK;
+
 public class TeacherMyProfileFragment extends Fragment {
+    @BindView(R.id.profilePhoto)
+    CircularImageView profilePhoto;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -25,15 +35,40 @@ public class TeacherMyProfileFragment extends Fragment {
         return view;
     }
 
-    @OnClick({R.id.backArrow, R.id.more})
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (Prefrence.getProfileImage(getContext()) != null )
+            profilePhoto.setImageURI(Prefrence.getProfileImage(getContext()));
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                Prefrence.saveProfileImage(resultUri, getContext());
+                profilePhoto.setImageURI(resultUri);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Helper.Toast(getContext(), result.getError().getMessage());
+                //Exception error = result.getError();
+            }
+        }
+    }
+
+    @OnClick({R.id.backArrow, R.id.more, R.id.profile})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
                 getFragmentManager().popBackStack();
                 break;
             case R.id.more:
-                FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, new TeacherMoreFragment()).addToBackStack(null).commit();
+                Helper.fragmentTransaction(this, new TeacherMoreFragment());
+                break;
+            case R.id.profile:
+                CropImage.activity().start(getContext(), this);
                 break;
         }
     }

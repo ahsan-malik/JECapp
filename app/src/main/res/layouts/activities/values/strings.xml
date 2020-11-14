@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="my_profile">My Profile</string>
+    <string name="my_jec_recruitment">My JEC Recruitment</string>
+    <string name="more">More</string>
+    <string name="your_applications">Your Applications</string>
+    <string name="post_applications">Post Applications</string>
+    <string name="applied">Applied</string>
+    <string name="our_jobs">Our Jobs</string>
+    <string name="post_jobs">Post Jobs</string>
+    <string name="hired">Hired</string>
+</resources>

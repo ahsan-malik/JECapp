@@ -42,6 +42,10 @@ public class Helper {
     public static final int CV_REQUEST_CODE = 102;
     public static final int IMAGE_REQUEST_CODE = 103;
 
+    public static void Toast(Context context, String msg){
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+    }
+
     public static ArrayAdapter<CharSequence> getSimpleSpinnerAdapter(int dataArray, Context context){
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, dataArray, R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);

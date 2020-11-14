@@ -8,15 +8,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import java.util.Objects;
+import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import j.e.c.com.Others.Helper;
+import j.e.c.com.Others.Prefrence;
 import j.e.c.com.R;
+import j.e.c.com.commonFragments.RecruitmentFragment;
 
 public class ProfileFragment extends Fragment {
+
+    @BindView(R.id.imageView)
+    CircularImageView imageView;
 
     @Nullable
     @Override
@@ -26,9 +32,25 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.profile)
-    public void onViewClicked() {
-        FragmentTransaction transaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, new TeacherMyProfileFragment()).addToBackStack(null).commit();
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (Prefrence.getProfileImage(getContext()) != null )
+            imageView.setImageURI(Prefrence.getProfileImage(getContext()));
+    }
+
+    @OnClick({R.id.backArrow, R.id.profile, R.id.recruitment})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.backArrow:
+                getFragmentManager().popBackStack();
+                break;
+            case R.id.profile:
+                Helper.fragmentTransaction(this, new TeacherMyProfileFragment());
+                break;
+            case R.id.recruitment:
+                Helper.fragmentTransaction(this, new RecruitmentFragment());
+                break;
+        }
     }
 }
