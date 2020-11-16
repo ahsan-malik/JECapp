@@ -1,14 +1,18 @@
 package j.e.c.com.teacherPanelFragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
@@ -26,6 +30,10 @@ import static android.app.Activity.RESULT_OK;
 public class TeacherMyProfileFragment extends Fragment {
     @BindView(R.id.profilePhoto)
     CircularImageView profilePhoto;
+    @BindView(R.id.nameText)
+    TextView nameText;
+    @BindView(R.id.idText)
+    TextView idText;
 
     @Nullable
     @Override
@@ -38,27 +46,31 @@ public class TeacherMyProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (Prefrence.getProfileImage(getContext()) != null )
-            profilePhoto.setImageURI(Prefrence.getProfileImage(getContext()));
+        if (Prefrence.getProfileImage(getContext()) != null)
+            profilePhoto.setImageBitmap(Prefrence.getProfileImage(getContext()));
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
+
             if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                Prefrence.saveProfileImage(resultUri, getContext());
-                profilePhoto.setImageURI(resultUri);
+
+                profilePhoto.setImageURI(result.getUri());
+                Prefrence.saveProfileImage(result.getUri(), getContext());
+
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+
                 Helper.Toast(getContext(), result.getError().getMessage());
                 //Exception error = result.getError();
             }
         }
     }
 
-    @OnClick({R.id.backArrow, R.id.more, R.id.profile})
+    @OnClick({R.id.backArrow, R.id.more, R.id.profile, R.id.name, R.id.id})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
@@ -69,6 +81,12 @@ public class TeacherMyProfileFragment extends Fragment {
                 break;
             case R.id.profile:
                 CropImage.activity().start(getContext(), this);
+                break;
+            case R.id.name:
+                Helper.popUpEditText(nameText, "Set new name...");
+                break;
+            case R.id.id:
+                Helper.popUpEditText(idText, "Set New id...");
                 break;
         }
     }

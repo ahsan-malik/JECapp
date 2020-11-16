@@ -44,8 +44,6 @@ public class SplashActivity extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
 
                 logoSplash.setAnimation(anim2);
-
-
                 companyName.setAnimation(anim3);
 
                 companyName.setVisibility(View.VISIBLE);
@@ -67,32 +65,17 @@ public class SplashActivity extends AppCompatActivity {
 
                     }
 
-
                     @Override
                     public void onAnimationRepeat(Animation animation) {
 
                     }
                 });
-
             }
-
             @Override
             public void onAnimationRepeat(Animation animation) {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     private void init() {
@@ -103,15 +86,9 @@ public class SplashActivity extends AppCompatActivity {
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
 
-
-        anim1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
+        anim1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.scale);
         anim2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadeout);
         anim3 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadein);
-
-
-
-
     }
-
 
 }

@@ -12,6 +12,8 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -179,6 +181,26 @@ public class Helper {
         }else
             spinner.setError(null);
         return true;
+    }
+
+    public static void popUpEditText(TextView targetView, String title){
+        AlertDialog.Builder alert = new AlertDialog.Builder(targetView.getContext());
+        final EditText edittext = new EditText(targetView.getContext());
+        alert.setTitle(title);
+
+        alert.setView(edittext);
+
+        alert.setPositiveButton("OK", (dialog, whichButton) -> {
+            //What ever you want to do with the value
+            if (!edittext.getText().toString().trim().equals(""))
+                targetView.setText(edittext.getText().toString());
+        });
+
+        alert.setNegativeButton("CANCEL", (dialog, whichButton) -> {
+            // what ever you want to do with No option.
+        });
+
+        alert.show();
     }
 
 }

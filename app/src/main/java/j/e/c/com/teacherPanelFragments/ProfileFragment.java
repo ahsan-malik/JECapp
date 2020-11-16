@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (Prefrence.getProfileImage(getContext()) != null )
-            imageView.setImageURI(Prefrence.getProfileImage(getContext()));
+            imageView.setImageBitmap(Prefrence.getProfileImage(getContext()));
     }
 
     @OnClick({R.id.backArrow, R.id.profile, R.id.recruitment})

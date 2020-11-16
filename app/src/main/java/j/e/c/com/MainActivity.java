@@ -1,13 +1,12 @@
 package j.e.c.com;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import j.e.c.com.chatFragments.ChatFragment;
 import j.e.c.com.teacherPanelFragments.HomeFragment;
@@ -47,12 +46,14 @@ public class MainActivity extends AppCompatActivity {
                     openFragment(new ChatFragment());
                     return true;
             }
-
             return true;
         });
     }
 
     private void openFragment(Fragment fragment){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+        if(!fragment.isVisible()) {
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        }
     }
 }
