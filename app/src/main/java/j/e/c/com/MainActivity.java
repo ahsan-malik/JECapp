@@ -2,12 +2,20 @@ package j.e.c.com;
 
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import j.e.c.com.Others.Helper;
+import j.e.c.com.Others.Prefrence;
 import j.e.c.com.chatFragments.ChatFragment;
 import j.e.c.com.teacherPanelFragments.HomeFragment;
 import j.e.c.com.teacherPanelFragments.ProfileFragment;
@@ -27,6 +35,21 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                if (!task.isSuccessful()) {
+                    Helper.Toast(MainActivity.this, task.getException().getMessage());
+                    return;
+                }
+
+                // Get new FCM registration token
+                String token = task.getResult().getToken();
+
+                Helper.Toast(MainActivity.this, token);
+                Prefrence.saveFcmToken(token, MainActivity.this);
+            }
+        });
     }
 
     @Override

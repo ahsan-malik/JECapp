@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -35,6 +37,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
+import j.e.c.com.MainActivity;
 import j.e.c.com.R;
 
 public class Helper {
@@ -43,6 +46,7 @@ public class Helper {
     public static final int VIDEO_REQUEST_CODE = 101;
     public static final int CV_REQUEST_CODE = 102;
     public static final int IMAGE_REQUEST_CODE = 103;
+    public static final String CHANNEL_ID = "technopoints_id";
 
     public static void Toast(Context context, String msg){
         Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
@@ -201,6 +205,16 @@ public class Helper {
         });
 
         alert.show();
+    }
+
+    public static void displayNotification(Context context, String title, String text){
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setSmallIcon(R.drawable.ic_playicon)
+                .setAutoCancel(true);
+        NotificationManagerCompat notificationCompat = NotificationManagerCompat.from(context);
+        notificationCompat.notify(1,mBuilder.build());
     }
 
 }

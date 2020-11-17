@@ -59,4 +59,16 @@ public class Prefrence {
         byte[] decodedByte = Base64.decode(input, 0);
         return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
     }
+
+    public static void saveFcmToken(String token, Context context){
+        if (prefs == null)
+            prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putString("FcmToken", token).apply();
+    }
+
+    public static String getFcmToken(Context context){
+        if (prefs == null)
+            prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString("FcmToken", null);
+    }
 }
