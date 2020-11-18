@@ -27,7 +27,12 @@
         </activity>
         <activity android:name=".activites.LoginActivity"/>
         <activity android:name=".activites.RegisterActivity"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name=".MainActivity"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>

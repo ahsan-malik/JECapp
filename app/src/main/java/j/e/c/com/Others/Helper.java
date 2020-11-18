@@ -207,14 +207,6 @@ public class Helper {
         alert.show();
     }
 
-    public static void displayNotification(Context context, String title, String text){
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setSmallIcon(R.drawable.appicon)
-                .setAutoCancel(true);
-        NotificationManagerCompat notificationCompat = NotificationManagerCompat.from(context);
-        notificationCompat.notify(1,mBuilder.build());
-    }
+
 
 }
