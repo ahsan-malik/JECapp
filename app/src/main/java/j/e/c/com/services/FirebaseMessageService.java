@@ -1,5 +1,7 @@
 package j.e.c.com.services;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -10,9 +12,10 @@ import j.e.c.com.Others.Prefrence;
 
 public class FirebaseMessageService extends FirebaseMessagingService {
     @Override
-    public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
+    public void onMessageReceived(@NonNull RemoteMessage remoteMessage){
         super.onMessageReceived(remoteMessage);
-        Helper.displayNotification(this, remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+        if (remoteMessage.getNotification() != null)
+            Helper.displayNotification(this, remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
     }
 
     @Override

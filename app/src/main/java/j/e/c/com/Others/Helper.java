@@ -211,7 +211,7 @@ public class Helper {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentTitle(title)
                 .setContentText(text)
-                .setSmallIcon(R.drawable.ic_playicon)
+                .setSmallIcon(R.drawable.appicon)
                 .setAutoCancel(true);
         NotificationManagerCompat notificationCompat = NotificationManagerCompat.from(context);
         notificationCompat.notify(1,mBuilder.build());

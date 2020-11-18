@@ -34,22 +34,6 @@ public class MainActivity extends AppCompatActivity {
         navView = findViewById(R.id.nav_view);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-
-        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-            @Override
-            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                if (!task.isSuccessful()) {
-                    Helper.Toast(MainActivity.this, task.getException().getMessage());
-                    return;
-                }
-
-                // Get new FCM registration token
-                String token = task.getResult().getToken();
-
-                Helper.Toast(MainActivity.this, token);
-                Prefrence.saveFcmToken(token, MainActivity.this);
-            }
-        });
     }
 
     @Override
