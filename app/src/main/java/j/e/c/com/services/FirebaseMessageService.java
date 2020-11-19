@@ -56,13 +56,16 @@ public class FirebaseMessageService extends FirebaseMessagingService {
         //PendingIntent intent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, 0);
 
         Map data = remoteMessage.getData();
+        //String title = (String) data.get("title");
+        //String body = (String) data.get("body");
+        //String targetFragment = (String) data.get("target");
         String title = (String) data.get("title");
-        String body = (String) data.get("body");
-        String targetFragment = (String) data.get("target");
+        String message = (String) data.get("message");
+        String id = (String) data.get("id");
 
         Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        resultIntent.putExtra("target", targetFragment);
+        //resultIntent.putExtra("target", targetFragment);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0 /* Request code */, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -74,9 +77,9 @@ public class FirebaseMessageService extends FirebaseMessagingService {
                 .setSmallIcon(R.drawable.appicon)
                 .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
                 .setNumber(10)
-                .setTicker(body)
+                .setTicker(message)
                 .setContentTitle(title)
-                .setContentText(body)
+                .setContentText(message)
                 .setContentInfo("Info")
                 .setContentIntent(pendingIntent);
         notificationManager.notify(1, notificationBuilder.build());
