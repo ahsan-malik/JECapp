@@ -9,8 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import j.e.c.com.Others.Helper;
 import j.e.c.com.chatFragments.ChatFragment;
-import j.e.c.com.services.FirebaseMessageService;
+import j.e.c.com.commonFragments.WelcomeFragment;
 import j.e.c.com.teacherPanelFragments.HomeFragment;
 import j.e.c.com.teacherPanelFragments.ProfileFragment;
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        onNewIntent(getIntent());
+
         navView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.navigation_person:
@@ -50,6 +53,24 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        //super.onNewIntent(intent);
+        Bundle extras = intent.getExtras();
+        if(extras != null){
+            String target = (String) extras.get("target");
+            switch (target){
+                case "chat":
+                    openFragment(new ChatFragment());
+                    break;
+                case "0":
+                case "1":
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WelcomeFragment()).addToBackStack(null).commit();
+                    break;
+            }
+        }
     }
 
     private void openFragment(Fragment fragment){

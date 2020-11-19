@@ -31,6 +31,18 @@ public class WelcomeFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        String text = getActivity().getIntent().getExtras().getString("target");
+        if (text.equals("1")){
+            waitView.setVisibility(View.GONE);
+            welcomView.setVisibility(View.VISIBLE);
+        }
+
+    }
+
     @OnClick({R.id.waitBtn, R.id.goBtn})
     public void onViewClicked(View view) {
         switch (view.getId()){
