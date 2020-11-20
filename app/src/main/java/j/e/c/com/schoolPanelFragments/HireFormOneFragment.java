@@ -109,7 +109,7 @@ public class HireFormOneFragment extends Fragment {
                 Helper.openCamera(this, Helper.CAPTURE_REQUEST_CODE);
                 break;
             case R.id.fillBtn:
-                if (validateField())
+                //if (validateField())
                     Helper.fragmentTransaction(this, new HireFormTwoFragment());
                 break;
         }
@@ -132,5 +132,6 @@ public class HireFormOneFragment extends Fragment {
 
         return b;
     }
+
 
 }

@@ -421,6 +421,7 @@
                 </LinearLayout>
 
                     <Button
+                        android:id="@+id/hireBtn"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_weight="1"

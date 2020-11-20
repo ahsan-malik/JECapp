@@ -13,4 +13,5 @@
 
     <color name="hintColor">#808080</color>
     <color name="hintColorDull">#9A808080</color>
+    <color name="backrough">#E8E7E5</color>
 </resources>

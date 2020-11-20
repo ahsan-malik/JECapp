@@ -35,10 +35,12 @@ public class WelcomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        String text = getActivity().getIntent().getExtras().getString("target");
-        if (text.equals("1")){
-            waitView.setVisibility(View.GONE);
-            welcomView.setVisibility(View.VISIBLE);
+        if (getActivity().getIntent().getExtras() != null) {
+            String text = getActivity().getIntent().getExtras().getString("target");
+            if (text.equals("1")) {
+                waitView.setVisibility(View.GONE);
+                welcomView.setVisibility(View.VISIBLE);
+            }
         }
 
     }

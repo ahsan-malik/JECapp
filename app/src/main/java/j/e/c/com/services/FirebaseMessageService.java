@@ -36,7 +36,7 @@ public class FirebaseMessageService extends FirebaseMessagingService {
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
         Prefrence.saveFcmToken(s, FirebaseMessageService.this);
-        Log.d("token", s);
+        //Log.d("token", s);
     }
 
     void displayNotification(Context context, String title, String text) {

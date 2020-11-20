@@ -22,4 +22,6 @@
     <dimen name="editText_marginHorizontal">@dimen/_7sdp</dimen>
     <dimen name="job_form_text_size">@dimen/_10ssp</dimen>
 
+    <dimen name="dialogTextSize">@dimen/_10ssp</dimen>
+
 </resources>

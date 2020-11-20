@@ -9,4 +9,7 @@
     <string name="our_jobs">Our Jobs</string>
     <string name="post_jobs">Post Jobs</string>
     <string name="hired">Hired</string>
+    <string name="scheduled_interviews">Scheduled Interviews</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
 </resources>

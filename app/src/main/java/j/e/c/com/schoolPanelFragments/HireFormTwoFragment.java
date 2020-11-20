@@ -71,7 +71,7 @@ public class HireFormTwoFragment extends Fragment {
                 getFragmentManager().popBackStack();
                 break;
             case R.id.submitBtn:
-                if (validateFields())
+                //if (validateFields())
                     Helper.fragmentTransaction(this, new WelcomeFragment());
                 break;
             case R.id.arrivalDate:
