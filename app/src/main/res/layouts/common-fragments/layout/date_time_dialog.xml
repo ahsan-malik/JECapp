@@ -95,6 +95,7 @@
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"/>
         <RelativeLayout
+            android:id="@+id/startingTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
@@ -132,6 +133,7 @@
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"/>
         <RelativeLayout
+            android:id="@+id/endingTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_5sdp"

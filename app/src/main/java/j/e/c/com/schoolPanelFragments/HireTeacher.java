@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,10 +45,20 @@ public class HireTeacher extends Fragment {
 
     void scheduleInterview() {
 
+        View dayView, monthView, yearView, startTimeView, endTimeView, startTimeLayout, endTimeLayout;
+
         View dateTimeView = getLayoutInflater().inflate(R.layout.date_time_dialog, null);
 
+        dayView = dateTimeView.findViewById(R.id.day);
+        monthView = dateTimeView.findViewById(R.id.month);
+        yearView = dateTimeView.findViewById(R.id.year);
+        startTimeView = dateTimeView.findViewById(R.id.day);
+        endTimeView = dateTimeView.findViewById(R.id.day);
+
+        startTimeLayout = dateTimeView.findViewById(R.id.day);
+        endTimeLayout = dateTimeView.findViewById(R.id.day);
+
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-        //alert.setTitle("Scheduling Interview");
         alert.setView(dateTimeView);
 
         //TextInputLayout dateLayout = dateTimeView.findViewById(R.id.date);
