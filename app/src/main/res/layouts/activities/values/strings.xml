@@ -12,4 +12,5 @@
     <string name="scheduled_interviews">Scheduled Interviews</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
+    <string name="select_interview_date_time"><![CDATA[Select Interview Date & Time]]></string>
 </resources>

@@ -104,6 +104,19 @@ public class Helper {
         timePickerDialog.show();
     }
 
+    public static void setTime(TextView timeView){
+        // Get Current Time
+        Calendar c = Calendar.getInstance();
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+
+        // Launch Time Picker Dialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(timeView.getContext(),
+                (view, hourOfDay, minute) -> timeView.setText(hourOfDay + ":" + minute), mHour, mMinute, true);
+        timePickerDialog.show();
+
+    }
+
     public static void openCamera(Fragment fragment, int requestCode) {
         Dexter.withContext(fragment.getContext()).withPermissions(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new MultiplePermissionsListener() {
             @Override

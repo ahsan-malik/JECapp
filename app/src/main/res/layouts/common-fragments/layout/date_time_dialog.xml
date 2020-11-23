@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="@dimen/_15sdp"
-        android:text="Select a time slot"
+        android:text="@string/select_interview_date_time"
         android:textColor="@color/black"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="@dimen/_16ssp"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -40,6 +40,7 @@
             android:weightSum="3"
             android:elevation="@dimen/_1sdp">
 
+
             <TextView
                 android:id="@+id/day"
                 android:layout_width="0dp"
@@ -49,7 +50,7 @@
                 android:background="@drawable/whiteroundbg"
                 android:gravity="center"
                 android:paddingVertical="@dimen/_8sdp"
-                android:text="11 Friday"
+                android:text="23"
                 android:textSize="@dimen/dialogTextSize"
                 android:textStyle="bold"
                 android:elevation="@dimen/_2sdp"
@@ -89,13 +90,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:text="starting from"
+            android:text="starting time"
             android:textAllCaps="true"
             android:textSize="@dimen/dialogTextSize"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"/>
         <RelativeLayout
-            android:id="@+id/startingTime"
+            android:id="@+id/starTimeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
@@ -104,49 +105,12 @@
             android:elevation="@dimen/_2sdp">
 
             <TextView
+                android:id="@+id/startTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="@dimen/_5sdp"
                 android:layout_alignParentLeft="true"
                 android:text="10 AM"
-                android:textStyle="bold"
-                android:textSize="@dimen/_12ssp"/>
-
-            <ImageView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:gravity="center_vertical"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="Ending At"
-            android:textAllCaps="true"
-            android:textSize="@dimen/dialogTextSize"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"/>
-        <RelativeLayout
-            android:id="@+id/endingTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_5sdp"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:background="@drawable/whiteroundbg"
-            android:elevation="@dimen/_2sdp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/_5sdp"
-                android:layout_alignParentLeft="true"
-                android:text="6 PM"
                 android:textStyle="bold"
                 android:textSize="@dimen/_12ssp"/>
 

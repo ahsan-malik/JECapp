@@ -1,5 +1,8 @@
 package j.e.c.com.schoolPanelFragments;
 
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +14,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.textfield.TextInputLayout;
 
-import butterknife.BindView;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.Objects;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.Others.Helper;
@@ -45,32 +50,28 @@ public class HireTeacher extends Fragment {
 
     void scheduleInterview() {
 
-        View dayView, monthView, yearView, startTimeView, endTimeView, startTimeLayout, endTimeLayout;
+        View startTimeLayout;
+        TextView dayView, monthView, yearView, startTimeView;
 
         View dateTimeView = getLayoutInflater().inflate(R.layout.date_time_dialog, null);
 
         dayView = dateTimeView.findViewById(R.id.day);
         monthView = dateTimeView.findViewById(R.id.month);
         yearView = dateTimeView.findViewById(R.id.year);
-        startTimeView = dateTimeView.findViewById(R.id.day);
-        endTimeView = dateTimeView.findViewById(R.id.day);
+        startTimeView = dateTimeView.findViewById(R.id.startTime);
 
-        startTimeLayout = dateTimeView.findViewById(R.id.day);
-        endTimeLayout = dateTimeView.findViewById(R.id.day);
+        startTimeLayout = dateTimeView.findViewById(R.id.starTimeLayout);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         alert.setView(dateTimeView);
 
-        //TextInputLayout dateLayout = dateTimeView.findViewById(R.id.date);
-        //TextInputLayout timeLayout = dateTimeView.findViewById(R.id.time);
-
-        //dateLayout.setOnClickListener(v -> Helper.setDate(dateLayout));
-        //timeLayout.setOnClickListener(v -> Helper.setTime(timeLayout));
+        dayView.setOnClickListener(v -> setDate(dayView, monthView, yearView));
+        monthView.setOnClickListener(v -> setDate(dayView, monthView, yearView));
+        yearView.setOnClickListener(v -> setDate(dayView, monthView, yearView));
+        startTimeLayout.setOnClickListener(v -> Helper.setTime(startTimeView));
 
         alert.setPositiveButton("OK", (dialog, whichButton) -> {
-            //What ever you want to do with the value
-            //if (!edittext.getText().toString().trim().equals(""))
-            //  targetView.setText(edittext.getText().toString());
+
         });
 
         alert.setNegativeButton("CANCEL", (dialog, whichButton) -> {
@@ -78,6 +79,36 @@ public class HireTeacher extends Fragment {
         });
 
         alert.show();
+    }
+
+    void setDate(TextView dayView, TextView monthView, TextView yearView){
+
+        Calendar calendar = Calendar.getInstance();
+
+        DatePickerDialog.OnDateSetListener onDateSetListener = (view, year, month, dayOfMonth) -> {
+            int mMonth = month + 1;
+            //String mDate = dayOfMonth + "-" + mMonth + "-" + year;
+            //Objects.requireNonNull(dateView.getEditText()).setText(mDate);
+
+
+            dayView.setText(String.valueOf(dayOfMonth));
+            monthView.setText(theMonth(month));
+            yearView.setText(String.valueOf(year));
+        };
+
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.Theme_MaterialComponents_Dialog_MinWidth, onDateSetListener, year, month, day);
+        Objects.requireNonNull(datePickerDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+        datePickerDialog.show();
+    }
+
+    String theMonth(int month){
+        String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        return monthNames[month];
     }
 
 }
