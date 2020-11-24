@@ -45,6 +45,18 @@
             </intent-filter>
         </service>
 
+        <service
+            android:name=".services.AutoStartService"
+            android:enabled="true" >
+        </service>
+
+        <receiver
+            android:name=".Others.RestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped">
+        </receiver>
+
     </application>
 
 </manifest>

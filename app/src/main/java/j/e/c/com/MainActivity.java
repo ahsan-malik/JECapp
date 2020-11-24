@@ -1,7 +1,10 @@
 package j.e.c.com;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -12,11 +15,15 @@ import androidx.fragment.app.FragmentManager;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.chatFragments.ChatFragment;
 import j.e.c.com.commonFragments.WelcomeFragment;
+import j.e.c.com.services.AutoStartService;
 import j.e.c.com.teacherPanelFragments.HomeFragment;
 import j.e.c.com.teacherPanelFragments.ProfileFragment;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    Intent mServiceIntent;
+    private AutoStartService mAutoStartService;
 
     BottomNavigationView navView;
 
@@ -24,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAutoStartService = new AutoStartService(getApplicationContext());
+        mServiceIntent = new Intent(this, AutoStartService.class);
+
+        if (!isMyServiceRunning(AutoStartService.class)) {
+            Helper.Toast(this, "service");
+            startService(mServiceIntent);
+        }
 
         //startService(new Intent(this, FirebaseMessageService.class));
 
@@ -57,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
-        //super.onNewIntent(intent);
+        super.onNewIntent(intent);
         Bundle extras = intent.getExtras();
         if(extras != null){
             String target = (String) extras.get("target");
@@ -71,6 +86,25 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        stopService(mServiceIntent);
+        Log.i("main", "onDestroy!");
+        super.onDestroy();
+    }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.i ("isMyServiceRunning?", true+"");
+                return true;
+            }
+        }
+        Log.i ("isMyServiceRunning?", false+"");
+        return false;
     }
 
     private void openFragment(Fragment fragment){

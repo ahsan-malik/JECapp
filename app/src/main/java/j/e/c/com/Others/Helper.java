@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -20,8 +19,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -39,7 +36,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-import j.e.c.com.MainActivity;
 import j.e.c.com.R;
 
 public class Helper {
@@ -112,7 +108,22 @@ public class Helper {
 
         // Launch Time Picker Dialog
         TimePickerDialog timePickerDialog = new TimePickerDialog(timeView.getContext(),
-                (view, hourOfDay, minute) -> timeView.setText(hourOfDay + ":" + minute), mHour, mMinute, true);
+                (view, hourOfDay, minute) -> {
+            String amPm, time;
+            if (hourOfDay<12){
+                amPm = "AM";
+            }else {
+                amPm = "PM";
+                hourOfDay -= 12;
+            }
+            if(hourOfDay == 0)
+                hourOfDay = 12;
+            if(minute<10)
+                time = hourOfDay + ":0" + minute + " " + amPm;
+            else time = hourOfDay + ":" + minute + " " + amPm;
+            timeView.setText(time);
+
+                }, mHour, mMinute, false);
         timePickerDialog.show();
 
     }
