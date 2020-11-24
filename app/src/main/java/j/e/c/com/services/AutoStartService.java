@@ -25,6 +25,7 @@ public class AutoStartService extends Service {
     public AutoStartService(){}
 
     public AutoStartService(Context applicationContext) {
+        super();
         this.context = applicationContext;
         Log.i(TAG, "AutoStartService: Here we go.....");
         //Toast.makeText(context, "AutoStartService: Here we go.....", Toast.LENGTH_SHORT).show();
@@ -41,8 +42,8 @@ public class AutoStartService extends Service {
         super.onStartCommand(intent, flags, startId);
         startTimer();
 
-        Intent service = new Intent(getApplicationContext(), FirebaseMessageService.class);
-        startService(service);
+        //Intent service = new Intent(getApplicationContext(), FirebaseMessageService.class);
+        //startService(service);
 
         return START_STICKY;
     }
@@ -52,7 +53,8 @@ public class AutoStartService extends Service {
         super.onDestroy();
         Log.i(TAG, "onDestroy: Service is destroyed :( ");
         //Toast.makeText(context, "onDestroy: Service is destroyed :( ", Toast.LENGTH_SHORT).show();
-        Intent broadcastIntent = new Intent(this, RestarterBroadcastReceiver.class);
+        //Intent broadcastIntent = new Intent(this, RestarterBroadcastReceiver.class);
+        Intent broadcastIntent = new Intent("ac.in.ActivityRecognition.RestartSensor");
 
         sendBroadcast(broadcastIntent);
         stoptimertask();

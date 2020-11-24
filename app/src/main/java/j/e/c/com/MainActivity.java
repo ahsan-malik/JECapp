@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAutoStartService = new AutoStartService(getApplicationContext());
-        mServiceIntent = new Intent(this, AutoStartService.class);
+        mServiceIntent = new Intent(getApplicationContext(), mAutoStartService.getClass());
 
-        if (!isMyServiceRunning(AutoStartService.class)) {
+        if (!isMyServiceRunning(mAutoStartService.getClass())) {
             Helper.Toast(this, "service");
             startService(mServiceIntent);
         }

@@ -47,14 +47,16 @@
 
         <service
             android:name=".services.AutoStartService"
-            android:enabled="true" >
-        </service>
-
+            android:enabled="true" />
         <receiver
             android:name=".Others.RestarterBroadcastReceiver"
             android:enabled="true"
             android:exported="true"
             android:label="RestartServiceWhenStopped">
+            <intent-filter>
+                <action android:name="ac.in.ActivityRecognition.RestartSensor" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
         </receiver>
 
     </application>
