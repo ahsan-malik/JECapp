@@ -1,18 +1,19 @@
 package j.e.c.com.services;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import j.e.c.com.Others.RestarterBroadcastReceiver;
 
 public class AutoStartService extends Service {
 
@@ -54,10 +55,31 @@ public class AutoStartService extends Service {
         Log.i(TAG, "onDestroy: Service is destroyed :( ");
         //Toast.makeText(context, "onDestroy: Service is destroyed :( ", Toast.LENGTH_SHORT).show();
         //Intent broadcastIntent = new Intent(this, RestarterBroadcastReceiver.class);
-        Intent broadcastIntent = new Intent("ac.in.ActivityRecognition.RestartSensor");
+        Intent broadcastIntent = new Intent("j.e.c.com.ActivityRecognition.RestartSensor");
 
         sendBroadcast(broadcastIntent);
         stoptimertask();
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        Log.i(TAG, "serviceonTaskRemoved()");
+
+
+
+        // workaround for kitkat: set an alarm service to trigger service again
+        Intent intent = new Intent(getApplicationContext(), AutoStartService.class);
+        PendingIntent pendingIntent = PendingIntent.getService(this, 1, intent, PendingIntent.FLAG_ONE_SHOT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 5000, pendingIntent);
+
+        super.onTaskRemoved(rootIntent);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        Log.i(TAG, "onLowMemory()");
     }
 
 

@@ -37,6 +37,10 @@
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
 
+
+
+
+
         <service
             android:name=".services.FirebaseMessageService"
             android:stopWithTask="false">
@@ -47,14 +51,18 @@
 
         <service
             android:name=".services.AutoStartService"
-            android:enabled="true" />
+            android:enabled="true"
+            android:stopWithTask="false" />
+
+
+
         <receiver
             android:name=".Others.RestarterBroadcastReceiver"
             android:enabled="true"
             android:exported="true"
             android:label="RestartServiceWhenStopped">
             <intent-filter>
-                <action android:name="ac.in.ActivityRecognition.RestartSensor" />
+                <action android:name="j.e.c.com.ActivityRecognition.RestartSensor" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>

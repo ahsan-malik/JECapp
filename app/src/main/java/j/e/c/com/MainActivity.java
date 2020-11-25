@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (!isMyServiceRunning(mAutoStartService.getClass())) {
             Helper.Toast(this, "service");
+            Log.i("helllo", "serive1111111111111");
             startService(mServiceIntent);
         }
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         stopService(mServiceIntent);
-        Log.i("main", "onDestroy!");
+        Log.i("mainnnn", "onDestroy!");
         super.onDestroy();
     }
 
