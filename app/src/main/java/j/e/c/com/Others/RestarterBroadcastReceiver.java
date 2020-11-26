@@ -20,6 +20,11 @@ public class RestarterBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.i(RestarterBroadcastReceiver.class.getName(), "Service Stopped, but this is a never ending service.");
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            Intent intent1 = new Intent(context.getApplicationContext(), AutoStartService.class);
+            context.startForegroundService(intent1);
+        }
+
         context.startService(new Intent(context, AutoStartService.class));
     }
 

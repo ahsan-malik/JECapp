@@ -107,7 +107,6 @@ public class AutoStartService extends Service {
             public void run() {
                 Log.i(TAG, "Timer is running " + counter++);
                 //Toast.makeText(context, "Timer is running " + counter++, Toast.LENGTH_SHORT).show();
-
             }
         };
     }

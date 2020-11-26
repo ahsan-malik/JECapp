@@ -37,7 +37,7 @@ public class FirebaseMessageService extends FirebaseMessagingService {
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
         Prefrence.saveFcmToken(s, FirebaseMessageService.this);
-        //Log.d("token", s);
+        Log.d("FCMtoken", s);
     }
 
     void displayNotification(Context context, String title, String text) {
@@ -57,16 +57,14 @@ public class FirebaseMessageService extends FirebaseMessagingService {
         //PendingIntent intent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, 0);
 
         Map data = remoteMessage.getData();
-        //String title = (String) data.get("title");
-        //String body = (String) data.get("body");
-        //String targetFragment = (String) data.get("target");
         String title = (String) data.get("title");
         String message = (String) data.get("message");
         String id = (String) data.get("id");
+        String target = (String) data.get("target");
 
         Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //resultIntent.putExtra("target", targetFragment);
+        resultIntent.putExtra("target", target);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0 /* Request code */, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -85,5 +83,4 @@ public class FirebaseMessageService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent);
         notificationManager.notify(1, notificationBuilder.build());
     }
-
 }

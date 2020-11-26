@@ -12,18 +12,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import j.e.c.com.Others.Helper;
 import j.e.c.com.chatFragments.ChatFragment;
 import j.e.c.com.commonFragments.WelcomeFragment;
-import j.e.c.com.services.AutoStartService;
+import j.e.c.com.services.FirebaseMessageService;
 import j.e.c.com.teacherPanelFragments.HomeFragment;
 import j.e.c.com.teacherPanelFragments.ProfileFragment;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    Intent mServiceIntent;
-    private AutoStartService mAutoStartService;
+//    Intent mServiceIntent;
+  //  private AutoStartService mAutoStartService;
 
     BottomNavigationView navView;
 
@@ -32,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+/*
         mAutoStartService = new AutoStartService(getApplicationContext());
         mServiceIntent = new Intent(getApplicationContext(), mAutoStartService.getClass());
 
@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
             Log.i("helllo", "serive1111111111111");
             startService(mServiceIntent);
         }
+*/
 
-        //startService(new Intent(this, FirebaseMessageService.class));
+        startService(new Intent(this, FirebaseMessageService.class));
 
         navView = findViewById(R.id.nav_view);
 
@@ -89,13 +90,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+ /*   @Override
     protected void onDestroy() {
         stopService(mServiceIntent);
         Log.i("mainnnn", "onDestroy!");
         super.onDestroy();
     }
-
+*/
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {

@@ -1,30 +1,21 @@
-/*
-package j.e.c.com.teacherPanelFragments.teacherAdapters;
+package j.e.c.com.schoolPanelFragments.schoolAdapter;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import butterknife.ButterKnife;
 
+public class PostedJobAdapter extends RecyclerView.Adapter<PostedJobAdapter.ViewHolder> {
 
-public class teacherShowingJobAdapter extends RecyclerView.Adapter<teacherShowingJobAdapter.ViewHolder>{
-
-    private Context mContext;
-    private List<School> jobList;
-
-    public teacherShowingJobAdapter(Context mContext, List<School> jobList) {
-        this.mContext = mContext;
-        this.jobList = jobList;
-    }
+    public PostedJobAdapter(){}
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        return null;
     }
 
     @Override
@@ -34,10 +25,10 @@ public class teacherShowingJobAdapter extends RecyclerView.Adapter<teacherShowin
 
     @Override
     public int getItemCount() {
-        return jobList.size();
+        return 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -45,4 +36,3 @@ public class teacherShowingJobAdapter extends RecyclerView.Adapter<teacherShowin
         }
     }
 }
-*/
