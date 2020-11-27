@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     openFragment(new HomeFragment());
                     return true;
-                case R.id.navigation_chat:
+               /* case R.id.navigation_chat:
                     openFragment(new ChatFragment());
-                    return true;
+                    return true;*/
             }
             return true;
         });

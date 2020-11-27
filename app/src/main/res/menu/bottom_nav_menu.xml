@@ -11,10 +11,10 @@
         android:icon="@drawable/ic_baseline_like_24"
         android:title="@string/like" />
 
-    <item
+   <!-- <item
         android:id="@+id/navigation_chat"
         android:icon="@drawable/ic_baseline_chat_24"
-        android:title="@string/chat" />
+        android:title="@string/chat" /> -->
 
     <item
         android:id="@+id/navigation_person"

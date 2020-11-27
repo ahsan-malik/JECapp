@@ -13,4 +13,5 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="select_interview_date_time"><![CDATA[Select Interview Date & Time]]></string>
+    <string name="view_applications"><u>View Applications</u></string>
 </resources>
