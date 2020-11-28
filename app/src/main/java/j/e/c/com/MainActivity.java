@@ -90,13 +90,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
- /*   @Override
+    @Override
     protected void onDestroy() {
-        stopService(mServiceIntent);
+        //stopService(mServiceIntent);
         Log.i("mainnnn", "onDestroy!");
         super.onDestroy();
     }
-*/
+
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {

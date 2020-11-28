@@ -19,10 +19,11 @@ import java.util.Map;
 import j.e.c.com.MainActivity;
 import j.e.c.com.Others.Prefrence;
 import j.e.c.com.R;
+import j.e.c.com.activites.SplashActivity;
 
 public class FirebaseMessageService extends FirebaseMessagingService {
 
-    private static final String CHANNEL_ID = "Bestmarts";
+    private static final String CHANNEL_ID = "JEC";
     
 
     @Override
@@ -30,14 +31,28 @@ public class FirebaseMessageService extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
         //displayNotification(this, remoteMessage.getData().get("title"), remoteMessage.getData().get("body"));
         //displayNotification(this, remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+        Log.w("FCMSERVICE", CHANNEL_ID);
         sendNotification(remoteMessage);
     }
+
 
     @Override
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
         Prefrence.saveFcmToken(s, FirebaseMessageService.this);
         Log.d("FCMtoken", s);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d("FCMC", "onCreate");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("FCMD", "onDestroy: ");
     }
 
     void displayNotification(Context context, String title, String text) {
@@ -62,7 +77,7 @@ public class FirebaseMessageService extends FirebaseMessagingService {
         String id = (String) data.get("id");
         String target = (String) data.get("target");
 
-        Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent resultIntent = new Intent(getApplicationContext(), SplashActivity.class);
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         resultIntent.putExtra("target", target);
 
