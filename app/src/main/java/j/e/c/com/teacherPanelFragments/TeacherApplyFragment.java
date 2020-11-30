@@ -3,6 +3,7 @@ package j.e.c.com.teacherPanelFragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,14 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.gowtham.library.utils.CompressOption;
+import com.gowtham.library.utils.TrimVideo;
+import com.gowtham.library.utils.TrimVideoOptions;
+import com.gowtham.library.utils.TrimmerUtils;
+import com.iceteck.silicompressorr.SiliCompressor;
+
+
+import java.net.URISyntaxException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,7 +97,18 @@ public class TeacherApplyFragment extends Fragment {
                     break;
                 case Helper.VIDEO_REQUEST_CODE:
                     videoTextView.setVisibility(View.VISIBLE);
-                    videoTextView.setText(data.getData().toString());
+
+                   /* try {
+                        String filePath = SiliCompressor.with(getContext()).compressVideo(data.getData().toString(), "/storage/emulated/0/DCIM/TESTFOLDER");
+                        videoTextView.setText(filePath);
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }*/
+
+                    trimVideo(data.getData().toString());
+                    break;
+                case 324:
+                    videoTextView.setText(TrimVideo.getTrimmedVideoPath(data));
                     break;
                 case Helper.CV_REQUEST_CODE:
                     cvTextView.setVisibility(View.VISIBLE);
@@ -141,5 +161,19 @@ public class TeacherApplyFragment extends Fragment {
                 break;
         }
     }
+
+    void trimVideo(String videoUri){
+        int[] videoWidthHeight = TrimmerUtils.getVideoWidthHeight(getActivity(), Uri.parse(videoUri));
+        //int sourceFrameRate = TrimmerUtils.getFrameRate(getActivity(), Uri.parse(videoUri));
+        //int sourceBitRate = TrimmerUtils.getBitRate(getActivity(), Uri.parse(videoUri));
+
+        //Helper.Toast(getContext(), "framerate: "+sourceFrameRate +" bitrate: "+sourceBitRate);
+
+        TrimVideo.activity(videoUri)
+                .setCompressOption(new CompressOption(30, "2M", videoWidthHeight[0], videoWidthHeight[1]))
+                .setDestination("/storage/emulated/0/DCIM/TESTFOLDER")
+                .start(this);
+    }
+
 
 }
