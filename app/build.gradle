@@ -78,5 +78,7 @@ dependencies {
 
     implementation 'com.github.a914-gowtham:Android-video-trimmer:1.5.2'
 
-    implementation 'com.iceteck.silicompressorr:silicompressor:2.2.4'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    implementation 'com.github.AbedElazizShe:LightCompressor:0.7.7'
 }

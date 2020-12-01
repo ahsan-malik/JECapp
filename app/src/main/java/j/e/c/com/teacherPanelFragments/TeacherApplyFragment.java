@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,23 +15,26 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.abedelazizshe.lightcompressorlibrary.CompressionListener;
+import com.abedelazizshe.lightcompressorlibrary.VideoCompressor;
+import com.abedelazizshe.lightcompressorlibrary.VideoQuality;
 import com.google.android.material.textfield.TextInputLayout;
 import com.gowtham.library.utils.CompressOption;
 import com.gowtham.library.utils.TrimVideo;
-import com.gowtham.library.utils.TrimVideoOptions;
 import com.gowtham.library.utils.TrimmerUtils;
-import com.iceteck.silicompressorr.SiliCompressor;
 
+import org.jetbrains.annotations.NotNull;
 
-import java.net.URISyntaxException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import j.e.c.com.Others.FileUtils;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
 
@@ -98,6 +102,13 @@ public class TeacherApplyFragment extends Fragment {
                 case Helper.VIDEO_REQUEST_CODE:
                     videoTextView.setVisibility(View.VISIBLE);
 
+                    String path = FileUtils.getPath(data.getData(), getContext());
+
+                    videoTextView.setText(path);
+                    Helper.Toast(getContext(), path);
+                    compressVideo(path);
+
+
                    /* try {
                         String filePath = SiliCompressor.with(getContext()).compressVideo(data.getData().toString(), "/storage/emulated/0/DCIM/TESTFOLDER");
                         videoTextView.setText(filePath);
@@ -105,7 +116,7 @@ public class TeacherApplyFragment extends Fragment {
                         e.printStackTrace();
                     }*/
 
-                    trimVideo(data.getData().toString());
+                    //trimVideo(data.getData().toString());
                     break;
                 case 324:
                     videoTextView.setText(TrimVideo.getTrimmedVideoPath(data));
@@ -162,17 +173,111 @@ public class TeacherApplyFragment extends Fragment {
         }
     }
 
+    void compressVideo(String path){
+        VideoCompressor.start(path, "/storage/emulated/0/DCIM/TESTFOLDER", new CompressionListener() {
+            @Override
+            public void onStart() {
+                Helper.Toast(getContext(), "start");
+            }
+
+            @Override
+            public void onSuccess() {
+                Helper.Toast(getContext(), "success");
+            }
+
+            @Override
+            public void onFailure(@NotNull String s) {
+                Log.d("compressFail", s);
+                Helper.Toast(getContext(), s);
+            }
+
+            @Override
+            public void onProgress(float v) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d("compressingVideo", ""+v);
+                        Helper.Toast(getContext(), ""+v);
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled() {
+                Log.d("compressingVideoca", "cancel");
+            }
+        }, VideoQuality.MEDIUM, false, false);
+    }
+
     void trimVideo(String videoUri){
         int[] videoWidthHeight = TrimmerUtils.getVideoWidthHeight(getActivity(), Uri.parse(videoUri));
-        //int sourceFrameRate = TrimmerUtils.getFrameRate(getActivity(), Uri.parse(videoUri));
-        //int sourceBitRate = TrimmerUtils.getBitRate(getActivity(), Uri.parse(videoUri));
+        int sourceFrameRate = TrimmerUtils.getFrameRate(getActivity(), Uri.parse(videoUri));
+        int sourceBitRate = TrimmerUtils.getBitRate(getActivity(), Uri.parse(videoUri));
+
+        int frameRate = 30;
+        int bitRate, width, height;
+        double multiplyFactor;
+        String bitRateString = "";
+
+
+        if (sourceFrameRate == 30)
+            frameRate = 24;
+        if (sourceFrameRate<30)
+            frameRate = sourceFrameRate;
+
+        bitRate = sourceBitRate/(1000*1000);
+
+        if (bitRate <= 1)
+            bitRateString = "800K";
+        if (bitRate < 2 && bitRate > 1)
+            bitRateString = "1M";
+        if (bitRate > 2)
+            bitRateString = "2M";
+
+        if (videoWidthHeight[0] >= 1920 || videoWidthHeight[1] >= 1920)
+            multiplyFactor = 0.5;
+        if (videoWidthHeight[0] >= 1280 || videoWidthHeight[1] >= 1280)
+            multiplyFactor = 0.75;
+        if (videoWidthHeight[0] >= 960 || videoWidthHeight[1] >= 960)
+            multiplyFactor = 0.95;
+        else multiplyFactor = 0.9;
+
+        width = (int)((videoWidthHeight[0] * multiplyFactor) / 16f) * 16;
+        height = (int)((videoWidthHeight[1] * multiplyFactor) / 16f) * 16;
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        TextView edittext = new TextView(getContext());
+
+        edittext.setText("frameRates: " + sourceFrameRate
+                + " bitrate: " + sourceBitRate
+                + "\n width: " + videoWidthHeight[0]
+                + "\n height: " + videoWidthHeight[1]
+                + "\n\n frameRate: " + frameRate
+                + " bitrate: " + bitRate
+                + "\n width: " + width
+                + "\n height: " + height
+        );
+
+        alert.setView(edittext);
+
+        int finalFrameRate = frameRate;
+        String finalBitRateString = bitRateString;
+        alert.setPositiveButton("OK", (dialog, whichButton) -> {
+            //What ever you want to do with the value
+            TrimVideo.activity(videoUri)
+                    .setCompressOption(new CompressOption(finalFrameRate, finalBitRateString, width, height))
+                    .setDestination("/storage/emulated/0/DCIM/TESTFOLDER")
+                    .start(this);
+        });
+
+        alert.setNegativeButton("CANCEL", (dialog, whichButton) -> {
+            // what ever you want to do with No option.
+        });
+
+        alert.show();
 
         //Helper.Toast(getContext(), "framerate: "+sourceFrameRate +" bitrate: "+sourceBitRate);
 
-        TrimVideo.activity(videoUri)
-                .setCompressOption(new CompressOption(30, "2M", videoWidthHeight[0], videoWidthHeight[1]))
-                .setDestination("/storage/emulated/0/DCIM/TESTFOLDER")
-                .start(this);
     }
 
 
