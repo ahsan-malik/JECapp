@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,9 @@ import com.gowtham.library.utils.TrimmerUtils;
 
 import org.jetbrains.annotations.NotNull;
 
+
+import java.io.File;
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -105,8 +109,8 @@ public class TeacherApplyFragment extends Fragment {
                     String path = FileUtils.getPath(data.getData(), getContext());
 
                     videoTextView.setText(path);
-                    Helper.Toast(getContext(), path);
-                    compressVideo(path);
+                    //Helper.Toast(getContext(), path);
+                    //compressVideo(path);
 
 
                    /* try {
@@ -116,7 +120,7 @@ public class TeacherApplyFragment extends Fragment {
                         e.printStackTrace();
                     }*/
 
-                    //trimVideo(data.getData().toString());
+                    trimVideo(data.getData().toString());
                     break;
                 case 324:
                     videoTextView.setText(TrimVideo.getTrimmedVideoPath(data));
@@ -174,7 +178,10 @@ public class TeacherApplyFragment extends Fragment {
     }
 
     void compressVideo(String path){
-        VideoCompressor.start(path, "/storage/emulated/0/DCIM/TESTFOLDER", new CompressionListener() {
+
+        File desFile = saveVideoFile(path);
+
+        VideoCompressor.start(path, desFile.getPath(), new CompressionListener() {
             @Override
             public void onStart() {
                 Helper.Toast(getContext(), "start");
@@ -182,7 +189,7 @@ public class TeacherApplyFragment extends Fragment {
 
             @Override
             public void onSuccess() {
-                Helper.Toast(getContext(), "success");
+                Helper.Toast(getContext(), "success "+desFile.length());
             }
 
             @Override
@@ -196,7 +203,7 @@ public class TeacherApplyFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d("compressingVideo", ""+v);
+                        //Log.d("compressingVideo", ""+v);
                         Helper.Toast(getContext(), ""+v);
                     }
                 });
@@ -207,6 +214,26 @@ public class TeacherApplyFragment extends Fragment {
                 Log.d("compressingVideoca", "cancel");
             }
         }, VideoQuality.MEDIUM, false, false);
+    }
+
+    private File saveVideoFile(String path) {
+        File videoFile = new File(path);
+
+        String videoFileName = System.currentTimeMillis() + videoFile.getName()+".mp4";
+        File downloadsPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File desFile = new File(downloadsPath, videoFileName);
+
+        if (desFile.exists())
+            desFile.delete();
+
+        try {
+            desFile.createNewFile();
+        } catch (IOException e) {
+            Helper.Toast(getContext(), e.toString());
+            e.printStackTrace();
+        }
+
+        return desFile;
     }
 
     void trimVideo(String videoUri){
@@ -229,18 +256,25 @@ public class TeacherApplyFragment extends Fragment {
 
         if (bitRate <= 1)
             bitRateString = "800K";
-        if (bitRate < 2 && bitRate > 1)
+        else if (bitRate < 2 && bitRate > 1)
             bitRateString = "1M";
-        if (bitRate > 2)
+        else if (bitRate <= 4 )
             bitRateString = "2M";
+        else if (bitRate>4)
+            bitRateString = bitRate/2+"M";
 
-        if (videoWidthHeight[0] >= 1920 || videoWidthHeight[1] >= 1920)
+        /*if (videoWidthHeight[0] >= 1920 || videoWidthHeight[1] >= 1920)
             multiplyFactor = 0.5;
         if (videoWidthHeight[0] >= 1280 || videoWidthHeight[1] >= 1280)
             multiplyFactor = 0.75;
         if (videoWidthHeight[0] >= 960 || videoWidthHeight[1] >= 960)
             multiplyFactor = 0.95;
-        else multiplyFactor = 0.9;
+        else multiplyFactor = 0.9;*/
+
+        multiplyFactor = 0.5;
+        if (videoWidthHeight[0] <= 360 || videoWidthHeight[1] <= 360) {
+            multiplyFactor = 0.95;
+        }
 
         width = (int)((videoWidthHeight[0] * multiplyFactor) / 16f) * 16;
         height = (int)((videoWidthHeight[1] * multiplyFactor) / 16f) * 16;
@@ -253,7 +287,7 @@ public class TeacherApplyFragment extends Fragment {
                 + "\n width: " + videoWidthHeight[0]
                 + "\n height: " + videoWidthHeight[1]
                 + "\n\n frameRate: " + frameRate
-                + " bitrate: " + bitRate
+                + " bitrate: " + bitRate + " " + bitRateString
                 + "\n width: " + width
                 + "\n height: " + height
         );
@@ -277,8 +311,5 @@ public class TeacherApplyFragment extends Fragment {
         alert.show();
 
         //Helper.Toast(getContext(), "framerate: "+sourceFrameRate +" bitrate: "+sourceBitRate);
-
     }
-
-
 }

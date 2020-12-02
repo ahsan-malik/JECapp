@@ -1,10 +1,13 @@
 package j.e.c.com.Others;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -245,6 +248,21 @@ public class Helper {
         alert.show();
     }
 
+    public static Bitmap getThumbnailPathForLocalFile(Activity context, Uri fileUri) {
+        long fileId = getFileId(context, fileUri);
+        return MediaStore.Video.Thumbnails.getThumbnail(context.getContentResolver(),
+                fileId, MediaStore.Video.Thumbnails.MICRO_KIND, null);
+    }
 
+    // Getting Selected File ID
+    public static long getFileId(Activity context, Uri fileUri) {
+        @SuppressWarnings("deprecation")
+        Cursor cursor = context.managedQuery(fileUri, new String[]{MediaStore.Video.Media._ID}, null, null, null);
+        if (cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID);
+            return cursor.getInt(columnIndex);
+        }
+        return 0;
+    }
 
 }
