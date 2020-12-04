@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import j.e.c.com.chatFragments.ChatFragment;
+import j.e.c.com.commonFragments.PlayVideoFragment;
 import j.e.c.com.commonFragments.WelcomeFragment;
 import j.e.c.com.services.FirebaseMessageService;
 import j.e.c.com.teacherPanelFragments.HomeFragment;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         navView = findViewById(R.id.nav_view);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+
     }
 
     @Override

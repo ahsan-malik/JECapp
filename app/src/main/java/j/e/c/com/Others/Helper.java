@@ -14,10 +14,10 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -35,6 +35,8 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -263,6 +265,10 @@ public class Helper {
             return cursor.getInt(columnIndex);
         }
         return 0;
+    }
+
+    public static String getFileExtension(Activity activity, Uri fileUri){
+        return MimeTypeMap.getSingleton().getExtensionFromMimeType(activity.getContentResolver().getType(fileUri));
     }
 
 }

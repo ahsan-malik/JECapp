@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
+import j.e.c.com.commonFragments.PlayVideoFragment;
 
 public class HireTeacher extends Fragment {
 
@@ -34,7 +35,7 @@ public class HireTeacher extends Fragment {
         return view;
     }
 
-    @OnClick({R.id.backArrow, R.id.filter, R.id.hireBtn})
+    @OnClick({R.id.backArrow, R.id.filter, R.id.hireBtn, R.id.videoIcon})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
@@ -44,6 +45,9 @@ public class HireTeacher extends Fragment {
                 break;
             case R.id.hireBtn:
                 scheduleInterview();
+                break;
+            case R.id.videoIcon:
+                Helper.fragmentTransaction(this, new PlayVideoFragment());
                 break;
         }
     }

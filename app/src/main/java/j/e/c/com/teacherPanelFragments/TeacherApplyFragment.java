@@ -1,6 +1,7 @@
 package j.e.c.com.teacherPanelFragments;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -21,25 +22,24 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.abedelazizshe.lightcompressorlibrary.CompressionListener;
-import com.abedelazizshe.lightcompressorlibrary.VideoCompressor;
-import com.abedelazizshe.lightcompressorlibrary.VideoQuality;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.gowtham.library.utils.CompressOption;
 import com.gowtham.library.utils.TrimVideo;
 import com.gowtham.library.utils.TrimmerUtils;
 
-import org.jetbrains.annotations.NotNull;
-
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.Others.FileUtils;
 import j.e.c.com.Others.Helper;
+import j.e.c.com.Others.Prefrence;
 import j.e.c.com.R;
 
 import static android.app.Activity.RESULT_OK;
@@ -105,10 +105,11 @@ public class TeacherApplyFragment extends Fragment {
                     break;
                 case Helper.VIDEO_REQUEST_CODE:
                     videoTextView.setVisibility(View.VISIBLE);
+                    uploadFileToFireBase(data.getData());
 
-                    String path = FileUtils.getPath(data.getData(), getContext());
+                    //String path = FileUtils.getPath(data.getData(), getContext());
 
-                    videoTextView.setText(path);
+                    videoTextView.setText(data.getData().getPath());
                     //Helper.Toast(getContext(), path);
                     //compressVideo(path);
 
@@ -120,11 +121,11 @@ public class TeacherApplyFragment extends Fragment {
                         e.printStackTrace();
                     }*/
 
-                    trimVideo(data.getData().toString());
+                    //trimVideo(data.getData().toString());
                     break;
-                case 324:
+                /*case 324:
                     videoTextView.setText(TrimVideo.getTrimmedVideoPath(data));
-                    break;
+                    break;*/
                 case Helper.CV_REQUEST_CODE:
                     cvTextView.setVisibility(View.VISIBLE);
                     cvTextView.setText(data.getData().toString());
@@ -177,7 +178,7 @@ public class TeacherApplyFragment extends Fragment {
         }
     }
 
-    void compressVideo(String path){
+    /*void compressVideo(String path){
 
         File desFile = saveVideoFile(path);
 
@@ -214,7 +215,7 @@ public class TeacherApplyFragment extends Fragment {
                 Log.d("compressingVideoca", "cancel");
             }
         }, VideoQuality.MEDIUM, false, false);
-    }
+    }*/
 
     private File saveVideoFile(String path) {
         File videoFile = new File(path);
@@ -312,4 +313,32 @@ public class TeacherApplyFragment extends Fragment {
 
         //Helper.Toast(getContext(), "framerate: "+sourceFrameRate +" bitrate: "+sourceBitRate);
     }
+
+    void uploadFileToFireBase(Uri fileUri){
+
+        ProgressDialog pd = new ProgressDialog(getContext());
+        pd.setTitle("Uploading Video...");
+        pd.show();
+
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference("Uploads");
+        StorageReference fileReference = storageReference.child("teacherID")
+                .child(System.currentTimeMillis() + "." + Helper.getFileExtension(getActivity(), fileUri));
+
+        fileReference.putFile(fileUri).addOnSuccessListener(taskSnapshot ->
+                Objects.requireNonNull(Objects.requireNonNull(taskSnapshot.getMetadata()).getReference()).getDownloadUrl()
+                        .addOnSuccessListener(uri -> {
+                            //addRoomToDB(new Room(id, beds, wifi, rent, status, uri.toString()));
+                            //saving video url
+                            Prefrence.saveVideoLink(uri.toString(), getContext());
+                            pd.dismiss();
+                            //Helper.Toast(getContext(), uri.toString());
+                        }))
+                .addOnFailureListener(e -> Helper.Toast(getContext(), e.toString()))
+                .addOnProgressListener(taskSnapshot -> {
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                    pd.setMessage("Uploading " + (int)progress + "%");
+                    //Helper.Toast(getContext(), "Uploading... "+ progress + "%");
+                });
+    }
+
 }

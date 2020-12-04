@@ -71,4 +71,16 @@ public class Prefrence {
             prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString("FcmToken", null);
     }
+
+    public static void saveVideoLink(String url, Context context){
+        if (prefs == null)
+            prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().putString("videoUrl", url).apply();
+    }
+
+    public static String getVideoLink(Context context){
+        if (prefs == null)
+            prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString("videoUrl", null);
+    }
 }
