@@ -27,7 +27,8 @@
             android:layout_gravity="center_vertical|center|start"
             android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/logo"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="match_parent"

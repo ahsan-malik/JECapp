@@ -2,16 +2,13 @@ package j.e.c.com.commonFragments.Adapters;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import j.e.c.com.R;
 import j.e.c.com.commonFragments.Models.Notification;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder>{
@@ -30,7 +27,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
     }
 
     @Override
