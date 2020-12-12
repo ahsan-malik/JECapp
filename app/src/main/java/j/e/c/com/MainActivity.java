@@ -16,6 +16,7 @@ import j.e.c.com.chatFragments.ChatFragment;
 import j.e.c.com.commonFragments.PaymentFragment;
 import j.e.c.com.commonFragments.PlayVideoFragment;
 import j.e.c.com.commonFragments.WelcomeFragment;
+import j.e.c.com.schoolPanelFragments.ContractFragment;
 import j.e.c.com.services.FirebaseMessageService;
 import j.e.c.com.teacherPanelFragments.HomeFragment;
 import j.e.c.com.teacherPanelFragments.ProfileFragment;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         navView = findViewById(R.id.nav_view);
 
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PaymentFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContractFragment()).commit();
 
 
     }

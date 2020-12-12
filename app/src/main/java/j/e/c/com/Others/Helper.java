@@ -190,7 +190,7 @@ public class Helper {
         }).check();
     }
 
-    private static void showSettingsDialog(Fragment fragment) {
+    public static void showSettingsDialog(Fragment fragment) {
         AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getContext());
         builder.setTitle("Need Permissions");
         builder.setMessage("This app needs permission to use this feature. You can grant them in app settings.");

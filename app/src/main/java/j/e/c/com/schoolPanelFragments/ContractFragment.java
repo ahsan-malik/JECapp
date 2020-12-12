@@ -1,0 +1,136 @@
+package j.e.c.com.schoolPanelFragments;
+
+import android.Manifest;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.os.Environment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import j.e.c.com.Others.Helper;
+import j.e.c.com.R;
+
+import static android.app.Activity.RESULT_OK;
+
+public class ContractFragment extends Fragment {
+    @BindView(R.id.contractImage)
+    ImageView contractImage;
+
+    View downloadContract;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_contract, container, false);
+        ButterKnife.bind(this, view);
+
+        downloadContract = view.findViewById(R.id.download);
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        downloadContract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Helper.Toast(getContext(), "downloading...");
+                downloadContract();
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && data != null) {
+            switch (requestCode) {
+                case Helper.IMAGE_REQUEST_CODE:
+                    contractImage.setImageURI(data.getData());
+                    break;
+            }
+        }
+    }
+
+    @OnClick({R.id.backArrow, R.id.upload, R.id.submit})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.backArrow:
+                getFragmentManager().popBackStack();
+                break;
+            case R.id.upload:
+                Helper.getFileFromStorage(this, Helper.IMAGE_REQUEST_CODE);
+                break;
+            case R.id.submit:
+                break;
+        }
+    }
+
+    private void downloadContract() {
+
+        Dexter.withContext(getContext()).withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE).withListener(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.banner1);
+                contractImage.setImageBitmap(bm);
+
+                String root = Environment.getExternalStorageDirectory().toString();
+                File myDir = new File(root + "/JEC_images");
+                myDir.mkdirs();
+
+                String fname = "JECcontract"+".png";
+
+                File file = new File(myDir, fname);
+                if (file.exists()) file.delete ();
+                try {
+                    FileOutputStream out = new FileOutputStream(file);
+                    bm.compress(Bitmap.CompressFormat.PNG, 100, out);
+                    out.flush();
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                if (permissionDeniedResponse.isPermanentlyDenied())
+                    Helper.showSettingsDialog(ContractFragment.this);
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                permissionToken.continuePermissionRequest();
+            }
+        }).withErrorListener(dexterError -> {
+            Toast.makeText(getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show();
+        }).check();
+    }
+
+}

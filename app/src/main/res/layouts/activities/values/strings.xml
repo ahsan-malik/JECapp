@@ -16,4 +16,5 @@
     <string name="view_applications"><u>View Applications</u></string>
     <string name="payment">Payment</string>
     <string name="notifications">Notifications</string>
+    <string name="add_a_position">Add a position</string>
 </resources>

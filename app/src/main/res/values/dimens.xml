@@ -24,4 +24,6 @@
 
     <dimen name="dialogTextSize">@dimen/_10ssp</dimen>
 
+    <dimen name="scheduleText">@dimen/_12ssp</dimen>
+
 </resources>

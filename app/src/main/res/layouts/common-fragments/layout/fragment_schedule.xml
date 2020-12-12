@@ -30,13 +30,10 @@
             android:textStyle="bold"/>
     </RelativeLayout>
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolBar">
-
-
-
-    </ScrollView>
+        android:layout_below="@id/toolBar"/>
 
 </RelativeLayout>
