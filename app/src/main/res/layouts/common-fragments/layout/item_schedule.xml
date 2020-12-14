@@ -10,7 +10,7 @@
     app:cardCornerRadius="@dimen/_20sdp"
     app:cardMaxElevation="0dp"
     app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="false"
+    app:cardUseCompatPadding="true"
     android:layout_marginTop="7dp">
 
     <LinearLayout
@@ -178,9 +178,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-
-
 
 </androidx.cardview.widget.CardView>

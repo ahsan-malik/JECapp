@@ -36,7 +36,7 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/apply"
+        android:id="@+id/creditPay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/_15sdp"
@@ -79,7 +79,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/hire"
+        android:id="@+id/wechatPay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_2sdp"
@@ -123,6 +123,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/aliPay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_2sdp"

@@ -2,10 +2,13 @@ package j.e.c.com.schoolPanelFragments;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +29,8 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,12 +60,11 @@ public class ContractFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        downloadContract.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.Toast(getContext(), "downloading...");
-                downloadContract();
-            }
+
+        downloadContract.setOnClickListener(v -> {
+            Helper.Toast(getContext(), "downloading...");
+            CopyReadAssets();
+            //downloadContract();
         });
     }
 
@@ -107,7 +109,7 @@ public class ContractFragment extends Fragment {
                 String fname = "JECcontract"+".png";
 
                 File file = new File(myDir, fname);
-                if (file.exists()) file.delete ();
+                if (file.exists()) file.delete();
                 try {
                     FileOutputStream out = new FileOutputStream(file);
                     bm.compress(Bitmap.CompressFormat.PNG, 100, out);
@@ -131,6 +133,44 @@ public class ContractFragment extends Fragment {
         }).withErrorListener(dexterError -> {
             Toast.makeText(getContext(), dexterError.toString(), Toast.LENGTH_SHORT).show();
         }).check();
+    }
+
+    private void CopyReadAssets() {
+        AssetManager assetManager = getActivity().getAssets();
+        InputStream in = null;
+        OutputStream out = null;
+        File file = new File(getActivity().getFilesDir(), "JECcontract.pdf");
+        try
+        {
+            in = assetManager.open("JECcontract.pdf");
+            out = getActivity().openFileOutput(file.getName(), getContext().MODE_WORLD_READABLE);
+
+            copyFile(in, out);
+            in.close();
+            in = null;
+            out.flush();
+            out.close();
+            out = null;
+        } catch (Exception e)
+        {
+            Log.e("tag", e.getMessage());
+        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(
+                Uri.parse("file://" + getActivity().getFilesDir() + "/JECcontract.pdf"),
+                "application/pdf");
+
+        startActivity(intent);
+    }
+
+    private void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while ((read = in.read(buffer)) != -1)
+        {
+            out.write(buffer, 0, read);
+        }
     }
 
 }
