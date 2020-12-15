@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         navView = findViewById(R.id.nav_view);
 
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContractFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PaymentFragment()).commit();
 
 
     }
