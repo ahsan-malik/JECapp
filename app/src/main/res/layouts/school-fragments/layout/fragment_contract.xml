@@ -64,7 +64,8 @@
         android:layout_below="@id/toolBar"
         android:layout_marginHorizontal="@dimen/_20sdp"
         android:layout_marginVertical="@dimen/_30sdp"
-        android:src="@drawable/imgplaceholder"/>
+        android:src="@drawable/imgplaceholder"
+        android:tag="imgplaceholder"/>
 
     <LinearLayout
         android:id="@+id/mmmm"

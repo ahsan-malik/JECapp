@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.karumi.dexter.Dexter;
@@ -37,6 +38,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
+import j.e.c.com.commonFragments.PaymentFragment;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -75,6 +77,7 @@ public class ContractFragment extends Fragment {
             switch (requestCode) {
                 case Helper.IMAGE_REQUEST_CODE:
                     contractImage.setImageURI(data.getData());
+                    contractImage.setTag("d");
                     break;
             }
         }
@@ -90,6 +93,27 @@ public class ContractFragment extends Fragment {
                 Helper.getFileFromStorage(this, Helper.IMAGE_REQUEST_CODE);
                 break;
             case R.id.submit:
+
+                if (contractImage.getTag().equals("d")) {
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+
+                    alert.setTitle("Please Pay The Commission First!");
+
+                    alert.setPositiveButton("PAY", (dialog, whichButton) -> {
+                        //What ever you want to do with the value
+                        Helper.fragmentTransaction(this, new PaymentFragment());
+                    });
+
+                    alert.setNegativeButton("CANCEL", (dialog, whichButton) -> {
+                        // what ever you want to do with No option.
+                    });
+
+                    alert.show();
+                }else {
+                    Helper.alert("Please Upload Filled Contract First!", getContext());
+                }
+
                 break;
         }
     }

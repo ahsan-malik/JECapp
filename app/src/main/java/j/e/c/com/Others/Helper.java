@@ -250,6 +250,17 @@ public class Helper {
         alert.show();
     }
 
+    public static void alert(String message, Context context){
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+
+        alert.setTitle(message);
+        alert.setPositiveButton("OK", (dialog, whichButton) -> {
+            //What ever you want to do with the value
+        });;
+
+        alert.show();
+    }
+
     public static Bitmap getThumbnailPathForLocalFile(Activity context, Uri fileUri) {
         long fileId = getFileId(context, fileUri);
         return MediaStore.Video.Thumbnails.getThumbnail(context.getContentResolver(),
