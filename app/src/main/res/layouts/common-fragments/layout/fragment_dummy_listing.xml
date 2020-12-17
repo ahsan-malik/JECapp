@@ -125,15 +125,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/nationality"
-                        android:textSize="@dimen/job_list_text_size"
-                        android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:text="Salary"
                         android:textSize="@dimen/job_list_text_size"
                         android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nationality"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/job_list_text_size" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

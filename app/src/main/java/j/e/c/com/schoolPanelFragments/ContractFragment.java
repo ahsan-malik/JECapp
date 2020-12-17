@@ -20,6 +20,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -32,6 +35,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,10 +48,17 @@ import j.e.c.com.commonFragments.PaymentFragment;
 import static android.app.Activity.RESULT_OK;
 
 public class ContractFragment extends Fragment {
-    @BindView(R.id.contractImage)
-    ImageView contractImage;
 
     View downloadContract;
+    List<SlideModel> slideModels;
+
+    @BindView(R.id.contractImage)
+    ImageView contractImage;
+    @BindView(R.id.contractImages)
+    ImageSlider contractImages;
+
+
+
 
     @Nullable
     @Override
@@ -55,6 +67,11 @@ public class ContractFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         downloadContract = view.findViewById(R.id.download);
+        slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.jeccontract1, ScaleTypes.CENTER_INSIDE));
+        slideModels.add(new SlideModel(R.drawable.jeccontract2, ScaleTypes.CENTER_INSIDE));
+        contractImages.setImageList(slideModels, ScaleTypes.CENTER_INSIDE);
+
 
         return view;
     }
@@ -73,11 +90,14 @@ public class ContractFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null) {
+        if (resultCode == RESULT_OK && data.getClipData() != null) {
             switch (requestCode) {
-                case Helper.IMAGE_REQUEST_CODE:
-                    contractImage.setImageURI(data.getData());
-                    contractImage.setTag("d");
+                case Helper.MULTIPLE_IMAGE_CODE:
+                    slideModels.clear();
+                    slideModels.add(new SlideModel(String.valueOf(data.getClipData().getItemAt(0).getUri()), ScaleTypes.CENTER_INSIDE));
+                    slideModels.add(new SlideModel(String.valueOf(data.getClipData().getItemAt(1).getUri()), ScaleTypes.CENTER_INSIDE));
+                    contractImages.setImageList(slideModels, ScaleTypes.CENTER_INSIDE);
+                    contractImages.setTag("d");
                     break;
             }
         }
@@ -90,15 +110,15 @@ public class ContractFragment extends Fragment {
                 getFragmentManager().popBackStack();
                 break;
             case R.id.upload:
-                Helper.getFileFromStorage(this, Helper.IMAGE_REQUEST_CODE);
+                Helper.getFileFromStorage(this, Helper.MULTIPLE_IMAGE_CODE);
                 break;
             case R.id.submit:
 
-                if (contractImage.getTag().equals("d")) {
+                if (contractImages.getTag().equals("d")) {
 
                     AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
 
-                    alert.setTitle("Please Pay The Commission First!");
+                    alert.setTitle("Please Pay First!");
 
                     alert.setPositiveButton("PAY", (dialog, whichButton) -> {
                         //What ever you want to do with the value
@@ -110,7 +130,7 @@ public class ContractFragment extends Fragment {
                     });
 
                     alert.show();
-                }else {
+                } else {
                     Helper.alert("Please Upload Filled Contract First!", getContext());
                 }
 
@@ -130,7 +150,7 @@ public class ContractFragment extends Fragment {
                 File myDir = new File(root + "/JEC_images");
                 myDir.mkdirs();
 
-                String fname = "JECcontract"+".png";
+                String fname = "JECcontract" + ".png";
 
                 File file = new File(myDir, fname);
                 if (file.exists()) file.delete();
@@ -164,8 +184,7 @@ public class ContractFragment extends Fragment {
         InputStream in = null;
         OutputStream out = null;
         File file = new File(getActivity().getFilesDir(), "JECcontract.pdf");
-        try
-        {
+        try {
             in = assetManager.open("JECcontract.pdf");
             out = getActivity().openFileOutput(file.getName(), getContext().MODE_WORLD_READABLE);
 
@@ -175,8 +194,7 @@ public class ContractFragment extends Fragment {
             out.flush();
             out.close();
             out = null;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e("tag", e.getMessage());
         }
 
@@ -191,8 +209,7 @@ public class ContractFragment extends Fragment {
     private void copyFile(InputStream in, OutputStream out) throws IOException {
         byte[] buffer = new byte[1024];
         int read;
-        while ((read = in.read(buffer)) != -1)
-        {
+        while ((read = in.read(buffer)) != -1) {
             out.write(buffer, 0, read);
         }
     }

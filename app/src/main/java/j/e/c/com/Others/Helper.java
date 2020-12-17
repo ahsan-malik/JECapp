@@ -49,6 +49,7 @@ public class Helper {
     public static final int VIDEO_REQUEST_CODE = 101;
     public static final int CV_REQUEST_CODE = 102;
     public static final int IMAGE_REQUEST_CODE = 103;
+    public static final int MULTIPLE_IMAGE_CODE = 104;
     public static final String CHANNEL_ID = "technopoints_id";
 
     public static void Toast(Context context, String msg){
@@ -169,6 +170,13 @@ public class Helper {
                     case VIDEO_REQUEST_CODE:
                         Intent videoIntent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
                         fragment.startActivityForResult(videoIntent , VIDEO_REQUEST_CODE);
+                        break;
+                    case MULTIPLE_IMAGE_CODE:
+                        Intent multiImage = new Intent();
+                        multiImage.setType("image/*");
+                        multiImage.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                        multiImage.setAction(Intent.ACTION_PICK);
+                        fragment.startActivityForResult(Intent.createChooser(multiImage,"Select Picture"), MULTIPLE_IMAGE_CODE);
                         break;
                 }
             }

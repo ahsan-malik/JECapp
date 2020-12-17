@@ -18,6 +18,7 @@ import j.e.c.com.Others.Helper;
 import j.e.c.com.Others.Prefrence;
 import j.e.c.com.R;
 import j.e.c.com.commonFragments.RecruitmentFragment;
+import j.e.c.com.commonFragments.SettingsFragment;
 
 public class ProfileFragment extends Fragment {
 
@@ -39,7 +40,7 @@ public class ProfileFragment extends Fragment {
             imageView.setImageBitmap(Prefrence.getProfileImage(getContext()));
     }
 
-    @OnClick({R.id.backArrow, R.id.profile, R.id.recruitment})
+    @OnClick({R.id.backArrow, R.id.profile, R.id.recruitment, R.id.setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
@@ -50,6 +51,9 @@ public class ProfileFragment extends Fragment {
                 break;
             case R.id.recruitment:
                 Helper.fragmentTransaction(this, new RecruitmentFragment());
+                break;
+            case R.id.setting:
+                Helper.fragmentTransaction(this, new SettingsFragment());
                 break;
         }
     }
