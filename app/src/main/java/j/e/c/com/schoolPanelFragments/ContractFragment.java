@@ -52,12 +52,10 @@ public class ContractFragment extends Fragment {
     View downloadContract;
     List<SlideModel> slideModels;
 
-    @BindView(R.id.contractImage)
-    ImageView contractImage;
     @BindView(R.id.contractImages)
     ImageSlider contractImages;
-
-
+    @BindView(R.id.paymentImg)
+    ImageView paymentImg;
 
 
     @Nullable
@@ -99,11 +97,14 @@ public class ContractFragment extends Fragment {
                     contractImages.setImageList(slideModels, ScaleTypes.CENTER_INSIDE);
                     contractImages.setTag("d");
                     break;
+                case Helper.IMAGE_REQUEST_CODE:
+                    paymentImg.setImageURI(data.getData());
+                    break;
             }
         }
     }
 
-    @OnClick({R.id.backArrow, R.id.upload, R.id.submit})
+    @OnClick({R.id.backArrow, R.id.upload, R.id.submit, R.id.paymentbtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
@@ -111,6 +112,9 @@ public class ContractFragment extends Fragment {
                 break;
             case R.id.upload:
                 Helper.getFileFromStorage(this, Helper.MULTIPLE_IMAGE_CODE);
+                break;
+            case R.id.paymentbtn:
+                Helper.getFileFromStorage(this, Helper.IMAGE_REQUEST_CODE);
                 break;
             case R.id.submit:
 
@@ -144,7 +148,7 @@ public class ContractFragment extends Fragment {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                 Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.banner1);
-                contractImage.setImageBitmap(bm);
+                //contractImage.setImageBitmap(bm);
 
                 String root = Environment.getExternalStorageDirectory().toString();
                 File myDir = new File(root + "/JEC_images");
