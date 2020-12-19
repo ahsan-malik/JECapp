@@ -14,7 +14,9 @@ import androidx.fragment.app.Fragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
+import j.e.c.com.schoolPanelFragments.ContractFragment;
 
 public class PaymentFragment extends Fragment {
     @Nullable
@@ -25,7 +27,7 @@ public class PaymentFragment extends Fragment {
         return view;
     }
 
-    @OnClick({R.id.backArrow, R.id.creditPay, R.id.wechatPay, R.id.aliPay})
+    @OnClick({R.id.backArrow, R.id.creditPay, R.id.wechatPay, R.id.aliPay, R.id.btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
@@ -38,6 +40,9 @@ public class PaymentFragment extends Fragment {
                 break;
             case R.id.aliPay:
                 payPopUp(R.drawable.barcodealipay);
+                break;
+            case R.id.btn:
+                Helper.fragmentTransaction(this, new ContractFragment());
                 break;
         }
     }
