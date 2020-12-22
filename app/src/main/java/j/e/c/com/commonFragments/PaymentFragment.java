@@ -34,6 +34,11 @@ public class PaymentFragment extends Fragment {
                 getFragmentManager().popBackStack();
                 break;
             case R.id.creditPay:
+                Helper.alert(null, "北京翰扬管理咨询有限公司\n" +
+                        "Beijing Hanyang Trading, Consultancy and Service Co.,LTD \n" +
+                        "中国建设银行 北京通州潞河支行\n" +
+                        "China Construction Bank \n" +
+                        "11050172500000001650", getContext());
                 break;
             case R.id.wechatPay:
                 payPopUp(R.drawable.barcodewechat);

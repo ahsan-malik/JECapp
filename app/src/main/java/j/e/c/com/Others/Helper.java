@@ -258,10 +258,11 @@ public class Helper {
         alert.show();
     }
 
-    public static void alert(String message, Context context){
+    public static void alert(String title, String message, Context context){
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
 
-        alert.setTitle(message);
+        alert.setTitle(title);
+        alert.setMessage(message);
         alert.setPositiveButton("OK", (dialog, whichButton) -> {
             //What ever you want to do with the value
         });;

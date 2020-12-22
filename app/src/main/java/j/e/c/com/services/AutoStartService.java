@@ -23,6 +23,8 @@ public class AutoStartService extends Service {
     private TimerTask timerTask;
     Context context;
 
+
+
     public AutoStartService(){}
 
     public AutoStartService(Context applicationContext) {

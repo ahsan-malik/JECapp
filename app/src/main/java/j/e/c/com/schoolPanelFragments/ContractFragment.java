@@ -135,7 +135,7 @@ public class ContractFragment extends Fragment {
 
                     alert.show();
                 } else {
-                    Helper.alert("Please Upload Filled Contract First!", getContext());
+                    Helper.alert("Please Upload Filled Contract First!", null, getContext());
                 }
 
                 break;
