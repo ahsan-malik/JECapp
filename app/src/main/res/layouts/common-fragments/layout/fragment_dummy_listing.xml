@@ -1303,22 +1303,19 @@
     </ScrollView>
 
 
-
-
-        <com.ncorti.slidetoact.SlideToActView
-            android:id="@+id/lock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/_60sdp"
-            android:layout_marginHorizontal="@dimen/_40sdp"
-            android:elevation="@dimen/_1sdp"
-            app:outer_color="@color/hintColorDull"
-            app:text="Slide to unlock"
-            app:text_color="@color/black"
-            app:slider_icon="@drawable/lock"
-            app:slider_icon_color="@color/black"
-            />
+    <com.ncorti.slidetoact.SlideToActView
+        android:id="@+id/lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/_60sdp"
+        android:elevation="@dimen/_1sdp"
+        app:outer_color="@color/hintColorDull"
+        app:slider_icon="@drawable/lock"
+        app:slider_icon_color="@color/black"
+        app:text="Slide to unlock"
+        app:text_color="@color/black" />
 
 
 

@@ -14,6 +14,7 @@ import butterknife.OnClick;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
 import j.e.c.com.schoolPanelFragments.HireTeacher;
+import j.e.c.com.schoolPanelFragments.HiredTeachersFragment;
 
 public class RecHireFragment extends Fragment {
     @Nullable
@@ -24,7 +25,7 @@ public class RecHireFragment extends Fragment {
         return view;
     }
 
-    @OnClick({R.id.backArrow, R.id.hire, R.id.post_application, R.id.apply_for_job, R.id.applied, R.id.schedule})
+    @OnClick({R.id.backArrow, R.id.hire, R.id.post_application, R.id.apply_for_job, R.id.hired, R.id.schedule})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.backArrow:
@@ -37,7 +38,8 @@ public class RecHireFragment extends Fragment {
                 break;
             case R.id.apply_for_job:
                 break;
-            case R.id.applied:
+            case R.id.hired:
+                Helper.fragmentTransaction(this, new HiredTeachersFragment());
                 break;
             case R.id.schedule:
                 break;
