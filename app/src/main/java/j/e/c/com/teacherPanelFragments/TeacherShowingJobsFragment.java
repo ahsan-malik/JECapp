@@ -1,6 +1,5 @@
 package j.e.c.com.teacherPanelFragments;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -26,14 +21,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.Models.School;
-import j.e.c.com.Others.Helper;
 import j.e.c.com.R;
 
 public class TeacherShowingJobsFragment extends Fragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    ArrayList<School> schools;
+    ArrayList<School> schoolList;
 
     @Nullable
     @Override
@@ -57,6 +51,10 @@ public class TeacherShowingJobsFragment extends Fragment {
                 getFragmentManager().popBackStack();
                 break;
             case R.id.filter:
+                ArrayList<School> schools = new ArrayList<>();
+                for (School school : schoolList){
+                    schools.add(school);
+                }
 
                 View filterView = getLayoutInflater().inflate(R.layout.pop_search_filter, null);
 
@@ -88,29 +86,56 @@ public class TeacherShowingJobsFragment extends Fragment {
 
                     String minS = minSalary.getText().toString().trim();
                     String maxS = maxSalary.getText().toString().trim();
-                    String location = locationEditText.getText().toString().trim();
+                    String location = locationEditText.getText().toString().trim().toLowerCase();
 
                     if(nationalityGroup.getCheckedRadioButtonId() == R.id.nativeRadioBtn){
-                        addSchoolToList(schoolArrayList, "Native");
+                        if (addSchoolToListByDemand(schoolArrayList, schools, "Native")){
+                            schools.clear();
+                            for (School school: schoolArrayList){
+                                schools.add(school);
+                            }
+                        }
                     }
                     else if(nationalityGroup.getCheckedRadioButtonId() == R.id.nonNativeRadioBtn){
-                        addSchoolToList(schoolArrayList, "Non Native");
+                        if(addSchoolToListByDemand(schoolArrayList, schools,"Non Native")){
+                            schools.clear();
+                            for (School school: schoolArrayList){
+                                schools.add(school);
+                            }
+                        }
                     }
                     if(jobTypeGroup.getCheckedRadioButtonId() == R.id.fullTimeRadioBtn){
-                        addSchoolToList(schoolArrayList, "Full Time");
-
+                        if(addSchoolToListByJobType(schoolArrayList, schools,"Full Time")){
+                            schools.clear();
+                            for (School school: schoolArrayList){
+                                schools.add(school);
+                            }
+                        }
                      }
                     else if(jobTypeGroup.getCheckedRadioButtonId() == R.id.partTimeRadioBtn){
-                        addSchoolToList(schoolArrayList, "Part Time");
+                        if(addSchoolToListByJobType(schoolArrayList, schools, "Part Time")){
+                            schools.clear();
+                            for (School school: schoolArrayList){
+                                schools.add(school);
+                            }
+                        }
                     }
                     if (!location.isEmpty()){
-
+                        if (addSchoolToListByLocation(schoolArrayList, schools, location)){
+                            schools.clear();
+                            for (School school: schoolArrayList){
+                                schools.add(school);
+                            }
+                        }
                     }
-                    if (!minS.isEmpty()){
 
-                    }
-                    if (!maxS.isEmpty()){
-
+                    if (!maxS.isEmpty() && !minS.isEmpty()){
+                        if (addSchoolToListBySalary(schoolArrayList, schools, Integer.parseInt(minS), Integer.parseInt(maxS))){
+                            schools.clear();
+                            for (School school: schoolArrayList){
+                                schools.add(school);
+                            }
+                        }
                     }
                 });
 
@@ -122,10 +147,47 @@ public class TeacherShowingJobsFragment extends Fragment {
         }
     }
 
-    boolean addSchoolToList(ArrayList<School> schoolList, String condition){
+    boolean addSchoolToListByDemand(ArrayList<School> schoolList, ArrayList<School> clonedList, String condition){
+        schoolList.clear();
         boolean i = false;
-        for (School school: schools){
+        for (School school: clonedList){
             if (school.getDemand().equals(condition)) {
+                schoolList.add(school);
+                i = true;
+            }
+        }
+        return i;
+    }
+    boolean addSchoolToListByJobType(ArrayList<School> schoolList, ArrayList<School> clonedList, String condition){
+        schoolList.clear();
+        boolean i = false;
+        for (School school: clonedList){
+            if (school.getJobTitle().equals(condition)) {
+                schoolList.add(school);
+                i = true;
+            }
+        }
+        return i;
+    }
+
+    boolean addSchoolToListByLocation(ArrayList<School> schoolList, ArrayList<School> clonedList, String condition){
+        schoolList.clear();
+        boolean i = false;
+        for (School school: clonedList){
+            if (school.getSchoolLocation().toLowerCase().contains(condition)) {
+                schoolList.add(school);
+                i = true;
+            }
+        }
+        return i;
+    }
+
+    boolean addSchoolToListBySalary(ArrayList<School> schoolList, ArrayList<School> clonedList, int min, int max){
+        schoolList.clear();
+        boolean i = false;
+        for (School school: clonedList){
+            int salary = Integer.parseInt(school.getSalary());
+            if (salary >= min && salary <= max) {
                 schoolList.add(school);
                 i = true;
             }
