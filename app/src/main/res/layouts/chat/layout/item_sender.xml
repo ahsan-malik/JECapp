@@ -2,14 +2,15 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:padding="8dp"
+    android:padding="5dp"
     android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/_30sdp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -18,9 +19,9 @@
             android:text="hello"
             android:layout_alignParentEnd="true"
             android:id="@+id/show_message"
-            android:textSize="18sp"
+            android:textSize="@dimen/_12ssp"
             android:textColor="#fff"
-            android:padding="@dimen/_10sdp"
+            android:padding="@dimen/_7sdp"
             android:layout_alignParentRight="true" />
 
         <TextView
@@ -32,7 +33,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="@dimen/_7sdp"
             android:text="5:22 PM"
-            android:textSize="@dimen/form_text_size"/>
+            android:textSize="@dimen/_7ssp"/>
 
     </RelativeLayout>
 

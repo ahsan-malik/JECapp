@@ -37,7 +37,6 @@ public class ChatFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 

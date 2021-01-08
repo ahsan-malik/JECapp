@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import j.e.c.com.chatFragments.ChatFragment;
+import j.e.c.com.commonFragments.FavoriteFragment;
 import j.e.c.com.commonFragments.PaymentFragment;
 import j.e.c.com.commonFragments.WelcomeFragment;
 import j.e.c.com.services.FirebaseMessageService;
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     openFragment(new HomeFragment());
                     return true;
+                case R.id.navigation_like:
+                    openFragment(new FavoriteFragment());
                /* case R.id.navigation_chat:
                     openFragment(new ChatFragment());
                     return true;*/

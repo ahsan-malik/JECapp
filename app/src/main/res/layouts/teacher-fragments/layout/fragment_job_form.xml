@@ -130,7 +130,9 @@
                     android:layout_height="wrap_content"
                     android:inputType="none"
                     android:textSize="@dimen/form_text_size"
-                    android:background="@drawable/shape_rect02"/>
+                    android:background="@drawable/shape_rect02"
+                    android:enabled="false"
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
