@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
@@ -29,7 +28,6 @@ import j.e.c.com.R;
 import j.e.c.com.commonFragments.WelcomeFragment;
 
 public class JobFormFragment extends Fragment {
-
 
     @BindView(R.id.nationality)
     AppCompatAutoCompleteTextView nationality;

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,14 @@ import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -30,21 +39,40 @@ import com.gowtham.library.utils.TrimVideo;
 import com.gowtham.library.utils.TrimmerUtils;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import j.e.c.com.Others.DataPart;
 import j.e.c.com.Others.FileUtils;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.Others.Prefrence;
+import j.e.c.com.Others.VolleyMultipartRequest;
 import j.e.c.com.R;
 
 import static android.app.Activity.RESULT_OK;
 
 public class TeacherApplyFragment extends Fragment {
+
+    private String upload_URL = "https://demonuts.com/Demonuts/JsonTest/Tennis/uploadfile.php?";
+    private RequestQueue rQueue;
+    private ArrayList<HashMap<String, String>> arraylist;
+    private String url = "https://www.google.com";
+    private static final int BUFFER_SIZE = 1024 * 2;
 
     boolean seflToogle = false;
 
@@ -105,7 +133,7 @@ public class TeacherApplyFragment extends Fragment {
                     break;
                 case Helper.VIDEO_REQUEST_CODE:
                     videoTextView.setVisibility(View.VISIBLE);
-                    uploadFileToFireBase(data.getData());
+                    //uploadFileToFireBase(data.getData());
 
                     //String path = FileUtils.getPath(data.getData(), getContext());
 
@@ -122,6 +150,15 @@ public class TeacherApplyFragment extends Fragment {
                     }*/
 
                     //trimVideo(data.getData().toString());
+
+                    Uri uri = data.getData();
+                    String uriString = uri.toString();
+                    File myFile = new File(uriString);
+                    String path = myFile.getAbsolutePath();
+                    String displayName = String.valueOf(Calendar.getInstance().getTimeInMillis()+".mp4");
+                    Log.d("ooooooo",displayName);
+                    uploadPDF(displayName,uri);
+                    
                     break;
                 /*case 324:
                     videoTextView.setText(TrimVideo.getTrimmedVideoPath(data));
@@ -133,6 +170,106 @@ public class TeacherApplyFragment extends Fragment {
             }
         }
 
+    }
+
+    private void uploadPDF(String pdfname, Uri pdffile) {
+        InputStream iStream = null;
+        try {
+
+            iStream = getActivity().getContentResolver().openInputStream(pdffile);
+            final byte[] inputData = getBytes(iStream);
+
+            VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, upload_URL,
+                    new Response.Listener<NetworkResponse>() {
+                        @Override
+                        public void onResponse(NetworkResponse response) {
+                            Log.d("ressssssoo",new String(response.data));
+                            rQueue.getCache().clear();
+                            try {
+                                JSONObject jsonObject = new JSONObject(new String(response.data));
+                                Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                jsonObject.toString().replace("\\\\","");
+
+                                if (jsonObject.getString("status").equals("true")) {
+                                    Log.d("come::: >>>  ","yessssss");
+                                    arraylist = new ArrayList<HashMap<String, String>>();
+                                    JSONArray dataArray = jsonObject.getJSONArray("data");
+
+
+                                    for (int i = 0; i < dataArray.length(); i++) {
+                                        JSONObject dataobj = dataArray.getJSONObject(i);
+                                        url = dataobj.optString("pathToFile");
+                                        //tv.setText(url);
+                                    }
+
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }) {
+
+                /*
+                 * If you want to add more parameters with the image
+                 * you can do it here
+                 * here we have only one parameter with the image
+                 * which is tags
+                 * */
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    // params.put("tags", "ccccc");  add string parameters
+                    return params;
+                }
+
+                /*
+                 *pass files using below method
+                 * */
+                @Override
+                protected Map<String, DataPart> getByteData() {
+                    Map<String, DataPart> params = new HashMap<>();
+
+                    params.put("filename", new DataPart(pdfname ,inputData));
+                    return params;
+                }
+            };
+
+
+            volleyMultipartRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    0,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            rQueue = Volley.newRequestQueue(getContext());
+            rQueue.add(volleyMultipartRequest);
+
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 
 
