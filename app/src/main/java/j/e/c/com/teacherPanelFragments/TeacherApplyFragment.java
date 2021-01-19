@@ -58,7 +58,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import j.e.c.com.Others.DataPart;
-import j.e.c.com.Others.FileUtils;
 import j.e.c.com.Others.Helper;
 import j.e.c.com.Others.Prefrence;
 import j.e.c.com.Others.VolleyMultipartRequest;
@@ -68,7 +67,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class TeacherApplyFragment extends Fragment {
 
-    private String upload_URL = "https://demonuts.com/Demonuts/JsonTest/Tennis/uploadfile.php?";
+    private String upload_URL = "http://jeccompany.ml/android_login_api/uploadfile.php";
     private RequestQueue rQueue;
     private ArrayList<HashMap<String, String>> arraylist;
     private String url = "https://www.google.com";
