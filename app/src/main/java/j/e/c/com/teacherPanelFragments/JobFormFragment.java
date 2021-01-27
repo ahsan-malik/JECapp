@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -65,8 +66,6 @@ public class JobFormFragment extends Fragment {
     Button submitBtn;
     @BindView(R.id.age)
     TextInputLayout age;
-    @BindView(R.id.workPlace)
-    TextInputLayout workPlace;
     @BindView(R.id.whenCanJoin)
     TextInputLayout whenCanJoin;
     @BindView(R.id.visaQualified)
@@ -75,6 +74,10 @@ public class JobFormFragment extends Fragment {
     CountryCodePicker countrySpinner;
     @BindView(R.id.residence)
     TextInputLayout residence;
+    @BindView(R.id.workPlace)
+    AppCompatAutoCompleteTextView workPlace;
+    @BindView(R.id.checkbox)
+    CheckBox checkbox;
 
     @Nullable
     @Override
@@ -96,6 +99,7 @@ public class JobFormFragment extends Fragment {
         experience.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.yearsArray, getContext()));
         visaType.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.typeOfVisa, getContext()));
         visaQualified.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.yesNoArray, getContext()));
+        workPlace.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.chineseCities, getContext()));
         visa.setAdapter(Helper.getSimpleSpinnerAdapter(R.array.visa, getContext()));
         visa.setOnItemClickListener((parent, view, position, id) -> {
             //Toast.makeText(getContext(), String.valueOf(position), Toast.LENGTH_LONG).show();
@@ -122,7 +126,7 @@ public class JobFormFragment extends Fragment {
 
     @OnClick({R.id.backArrow, R.id.submitBtn, R.id.whenCanJoin})
     public void onViewClicked(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.backArrow:
                 getFragmentManager().popBackStack();
                 break;
@@ -137,45 +141,45 @@ public class JobFormFragment extends Fragment {
 
     }
 
-    boolean validateFields(){
+    boolean validateFields() {
         boolean b = true;
-        if(!Helper.validateField(name))
+        if (!Helper.validateField(name))
             b = false;
-        if(!Helper.validateField(age))
+        if (!Helper.validateField(age))
             b = false;
-        if(!Helper.validateField(nationality))
+        if (!Helper.validateField(nationality))
             b = false;
-        if(!Helper.validateField(gender))
+        if (!Helper.validateField(gender))
             b = false;
-        if(!Helper.validateField(salary))
+        if (!Helper.validateField(salary))
             b = false;
-        if(!Helper.validateField(education))
+        if (!Helper.validateField(education))
             b = false;
-        if(!Helper.validateField(graduation))
+        if (!Helper.validateField(graduation))
             b = false;
-        if(!Helper.validateField(job))
+        if (!Helper.validateField(job))
             b = false;
-        if(!Helper.validateField(visa))
+        if (!Helper.validateField(visa))
             b = false;
         else if (TextUtils.equals(visa.getText().toString(), "Have")) {
             if (!Helper.validateField(visaType))
                 b = false;
         }
-        if(!Helper.validateField(visaQualified))
+        if (!Helper.validateField(visaQualified))
             b = false;
-        if(!Helper.validateField(workPlace))
-            b = false;
-        if(!Helper.validateField(beenChina))
+        if (!Helper.validateField(beenChina))
             b = false;
         else if (TextUtils.equals(beenChina.getText().toString(), "Yes")) {
             if (!Helper.validateField(yearsInChina))
                 b = false;
         }
-        if(!Helper.validateField(experience))
+        if (!Helper.validateField(experience))
             b = false;
-        if(!Helper.validateField(whenCanJoin))
+        if (!Helper.validateField(workPlace))
             b = false;
-        if(!Helper.validateField(residence))
+        if (!Helper.validateField(whenCanJoin))
+            b = false;
+        if (!Helper.validateField(residence))
             b = false;
 
         return b;

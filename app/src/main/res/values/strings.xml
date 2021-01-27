@@ -163,8 +163,8 @@
     </string-array>
 
     <string-array name="chineseCities">
-        <item>Aksu/阿克苏市</item>
-        <item>Alashankou/阿拉山口市</item>
+        <item>Aksu / 阿克苏市</item>
+        <item>Alashankou / 阿拉山口市</item>
         <item>Altay/阿勒泰市</item>
         <item>Anda/安达市</item>
         <item>Anguo/安国市</item>
@@ -191,7 +191,7 @@
         <item>Bayannur/巴彦淖尔市</item>
         <item>Bazhong/巴中市</item>
         <item>Bazhou/霸州市</item>
-        <item>Bei'an/北安市</item>
+        <item>Bei\'an/北安市</item>
         <item>Beihai/北海市</item>
         <item>Beijing/北京市</item>
         <item>Beiliu/北流市</item>
@@ -236,7 +236,7 @@
         <item>Chuxiong/楚雄市</item>
         <item>Chuzhou/滁州市</item>
         <item>Cixi/慈溪市</item>
-        <item>Da'an/大安市</item>
+        <item>Da\'an/大安市</item>
         <item>Dali/大理市</item>
         <item>Dalian/大连市</item>
         <item>Dandong/丹东市</item>
@@ -285,7 +285,7 @@
         <item>Fengzhen/丰镇市</item>
         <item>Fenyang/汾阳市</item>
         <item>Foshan/佛山市</item>
-        <item>Fu'an/福安市</item>
+        <item>Fu\'an/福安市</item>
         <item>Fuding/福鼎市</item>
         <item>Fujin/富锦市</item>
         <item>Fukang/阜康市</item>
@@ -300,7 +300,7 @@
         <item>Fuzhou/抚州市</item>
         <item>Gaizhou/盖州市</item>
         <item>Ganzhou/赣州市</item>
-        <item>Gao'an/高安市</item>
+        <item>Gao\'an/高安市</item>
         <item>Gaobeidian/高碑店市</item>
         <item>Gaomi/高密市</item>
         <item>Gaoping/高平市</item>
@@ -312,7 +312,7 @@
         <item>Gongqingcheng/共青城市</item>
         <item>Gongyi/巩义市</item>
         <item>Gongzhuling/公主岭市</item>
-        <item>Guang'an/广安市</item>
+        <item>Guang\'an/广安市</item>
         <item>Guangde/广德市</item>
         <item>Guanghan/广汉市</item>
         <item>Guangshui/广水市</item>
@@ -325,7 +325,7 @@
         <item>Guiyang/贵阳市</item>
         <item>Gujiao/古交市</item>
         <item>Guyuan/固原市</item>
-        <item>Hai'an/海安市</item>
+        <item>Hai\'an/海安市</item>
         <item>Haicheng/海城市</item>
         <item>Haidong/海东市</item>
         <item>Haikou/海口市</item>
@@ -364,7 +364,7 @@
         <item>Hotan/和田市</item>
         <item>Houma/侯马市</item>
         <item>Huadian/桦甸市</item>
-        <item>Huai'an/淮安市</item>
+        <item>Huai\'an/淮安市</item>
         <item>Huaibei/淮北市</item>
         <item>Huaihua/怀化市</item>
         <item>Huainan/淮南市</item>
@@ -386,10 +386,10 @@
         <item>Huozhou/霍州市</item>
         <item>Huyanghe/胡杨河市</item>
         <item>Huzhou/湖州市</item>
-        <item>Ji'an/吉安市</item>
-        <item>Ji'an/集安市</item>
+        <item>Ji\'an/吉安市</item>
+        <item>Ji\'an/集安市</item>
         <item>Jiamusi/佳木斯市</item>
-        <item>Jian'ou/建瓯市</item>
+        <item>Jian\'ou/建瓯市</item>
         <item>Jiande/建德市</item>
         <item>Jiangmen/江门市</item>
         <item>Jiangshan/江山市</item>
@@ -502,7 +502,7 @@
         <item>Longquan/龙泉市</item>
         <item>Longyan/龙岩市</item>
         <item>Loudi/娄底市</item>
-        <item>Lu'an/六安市</item>
+        <item>Lu\'an/六安市</item>
         <item>Luanzhou/滦州市</item>
         <item>Lufeng/陆丰市</item>
         <item>Lüliang/吕梁市</item>
@@ -512,7 +512,7 @@
         <item>Lushan/庐山市</item>
         <item>Lushui/泸水市</item>
         <item>Luzhou/泸州市</item>
-        <item>Ma'anshan/马鞍山市</item>
+        <item>Ma\'anshan/马鞍山市</item>
         <item>Macau/澳門特别行政區</item>
         <item>Macheng/麻城市</item>
         <item>Mangnai/茫崖市</item>
@@ -534,7 +534,7 @@
         <item>Mudanjiang/牡丹江市</item>
         <item>Muling/穆棱市</item>
         <item>Nagqu/那曲市</item>
-        <item>Nan'an/南安市</item>
+        <item>Nan\'an/南安市</item>
         <item>Nanchang/南昌市</item>
         <item>Nanchong/南充市</item>
         <item>Nangong/南宫市</item>
@@ -547,7 +547,7 @@
         <item>Nehe/讷河市</item>
         <item>Neijiang/内江市</item>
         <item>Nenjiang/嫩江市</item>
-        <item>Ning'an/宁安市</item>
+        <item>Ning\'an/宁安市</item>
         <item>Ningbo/宁波市</item>
         <item>Ningde/宁德市</item>
         <item>Ningguo/宁国市</item>
@@ -568,12 +568,12 @@
         <item>Pingxiang/凭祥市</item>
         <item>Pingxiang/萍乡市</item>
         <item>Pizhou/邳州市</item>
-        <item>Pu'er/普洱市</item>
+        <item>Pu\'er/普洱市</item>
         <item>Puning/普宁市</item>
         <item>Putian/莆田市</item>
         <item>Puyang/濮阳市</item>
         <item>Qamdo/昌都市</item>
-        <item>Qian'an/迁安市</item>
+        <item>Qian\'an/迁安市</item>
         <item>Qianjiang/潜江市</item>
         <item>Qianshan/潜山市</item>
         <item>Qidong/启东市</item>
@@ -659,7 +659,7 @@
         <item>Suzhou/宿州市</item>
         <item>Suzhou/苏州市</item>
         <item>Tacheng/塔城市</item>
-        <item>Tai'an/泰安市</item>
+        <item>Tai\'an/泰安市</item>
         <item>Taicang/太仓市</item>
         <item>Taishan/台山市</item>
         <item>Taixing/泰兴市</item>
@@ -703,7 +703,7 @@
         <item>Wenling/温岭市</item>
         <item>Wenshan/文山市</item>
         <item>Wenzhou/温州市</item>
-        <item>Wu'an/武安市</item>
+        <item>Wu\'an/武安市</item>
         <item>Wuchang/五常市</item>
         <item>Wuchuan/吴川市</item>
         <item>Wudalianchi/五大连池市</item>
@@ -722,7 +722,7 @@
         <item>Wuzhishan/五指山市</item>
         <item>Wuzhong/吴忠市</item>
         <item>Wuzhou/梧州市</item>
-        <item>Xi'an/西安市</item>
+        <item>Xi\'an/西安市</item>
         <item>Xiamen/厦门市</item>
         <item>Xiangcheng/项城市</item>
         <item>Xiangtan/湘潭市</item>
@@ -761,9 +761,9 @@
         <item>Xuanwei/宣威市</item>
         <item>Xuchang/许昌市</item>
         <item>Xuzhou/徐州市</item>
-        <item>Ya'an/雅安市</item>
+        <item>Ya\'an/雅安市</item>
         <item>Yakeshi/牙克石市</item>
-        <item>Yan'an/延安市</item>
+        <item>Yan\'an/延安市</item>
         <item>Yancheng/盐城市</item>
         <item>Yangchun/阳春市</item>
         <item>Yangjiang/阳江市</item>
@@ -790,7 +790,7 @@
         <item>Yixing/宜兴市</item>
         <item>Yiyang/益阳市</item>
         <item>Yizheng/仪征市</item>
-        <item>Yong'an/永安市</item>
+        <item>Yong\'an/永安市</item>
         <item>Yongcheng/永城市</item>
         <item>Yongji/永济市</item>
         <item>Yongkang/永康市</item>
